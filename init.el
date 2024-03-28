@@ -39,7 +39,7 @@
 ;;
 (require 'init-01-basic)
 (require 'init-02-org)
-(require 'init-03-doom-themes)
+(require 'init-03-themes)
 (require 'init-04-packages)
 (require 'init-05-ivy)
 (require 'init-06-smart-mode-line)
