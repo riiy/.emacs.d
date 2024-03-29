@@ -25,6 +25,7 @@
                          ("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")))
 (package-initialize)
 (global-set-key (kbd "C-j") nil)
+(save-place-mode 1)
 (provide 'init-01-basic)
 ;; coding: utf-8
 ;; no-byte-compile: t

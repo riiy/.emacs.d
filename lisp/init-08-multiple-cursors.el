@@ -8,7 +8,7 @@
   :ensure t
   :after hydra
   :bind
-  (("C-x C-h m" . hydra-multiple-cursors/body)
+  (("C-m" . hydra-multiple-cursors/body)
    ("C-S-<mouse-1>" . mc/toggle-cursor-on-click))
   :hydra (hydra-multiple-cursors
           (:hint nil)
@@ -41,4 +41,4 @@ Up^^             Down^^           Miscellaneous           % 2(mc/num-cursors) cu
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init.el ends here
+;;; init-08-multiple-cursors.el ends here

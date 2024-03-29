@@ -8,7 +8,7 @@
   :ensure t
   :init (global-undo-tree-mode)
   :after hydra
-  :bind ("C-x C-h u" . hydra-undo-tree/body)
+  :bind ("C-u" . hydra-undo-tree/body)
   :hydra (hydra-undo-tree (:hint nil)
                           "
   _p_: undo  _n_: redo _s_: save _l_: load   "
@@ -24,4 +24,4 @@
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init.el ends here
+;;; init-07-undo-tree.el ends here
