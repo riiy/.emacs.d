@@ -23,4 +23,4 @@
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init.el ends here
+;;; init-06-smart-mode-line.el ends here

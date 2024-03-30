@@ -49,7 +49,7 @@
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l"
 	lsp-file-watch-threshold 500)
-  :hook 
+  :hook
   (lsp-mode . lsp-enable-which-key-integration) ; which-key integration
   :commands (lsp lsp-deferred)
   :config
@@ -152,7 +152,7 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
 (use-package pyvenv
   :ensure t
   :config
-  (setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs"))
+  ;; (setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs"))
   ;; (setq python-shell-interpreter "python3")  ; （可选）更改解释器名字
   (pyvenv-mode t)
   ;; （可选）如果希望启动后激活 miniconda 的 base 环境，就使用如下的 hook
@@ -172,4 +172,8 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
 
 (provide 'init-09-develop)
 
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: t
+;; End:
 ;;; init-09-develop.el ends here

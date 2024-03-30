@@ -5,14 +5,14 @@
 
 ;;; Code:
 (use-package ivy
-  :ensure t                          ; 确认安装，如果没有安装过 ivy 就自动安装    
+  :ensure t                          ; 确认安装，如果没有安装过 ivy 就自动安装
   :init                              ; 在加载插件前执行命令
   (ivy-mode 1)                       ; 启动 ivy-mode
   (counsel-mode 1)
   :custom                            ; 自定义一些变量，相当于赋值语句 (setq xxx yyy)
   (ivy-use-virtual-buffers t)        ; 一些官网提供的固定配置
   (search-default-mode #'char-fold-to-regexp)
-  (ivy-count-format "(%d/%d) ") 
+  (ivy-count-format "(%d/%d) ")
   :bind                              ; 以下为绑定快捷键
   (("C-s" . 'swiper-isearch)          ; 绑定快捷键 C-s 为 swiper-search，替换原本的搜索功能
    ("M-x" . 'counsel-M-x)             ; 使用 counsel 替换命令输入，给予更多提示
@@ -35,4 +35,4 @@
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init.el ends here
+;;; init-05-ivy.el ends here

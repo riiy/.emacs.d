@@ -8,7 +8,8 @@
   :ensure t
   :after hydra
   :bind
-  (("C-m" . hydra-multiple-cursors/body)
+  (("C-x C-m" . hydra-multiple-cursors/body)
+   (:map mc/keymap ("<return>" . nil))
    ("C-S-<mouse-1>" . mc/toggle-cursor-on-click))
   :hydra (hydra-multiple-cursors
           (:hint nil)
