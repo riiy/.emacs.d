@@ -1,7 +1,5 @@
-;;; init-02-org.el --- Load the full configuration -*- lexical-binding: t -*-
+;;; init-10-org.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
-
-
 ;;; Code:
 
 ;; org
@@ -18,16 +16,9 @@
   (("C-c a" . 'org-agenda)
    :map org-mode-map
    ("C-c C-q" . counsel-org-tag)))
-(use-package evil-org
-  :ensure t
-  :after org
-  :hook (org-mode . (lambda () evil-org-mode))
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
-(provide 'init-02-org)
+(provide 'init-10-org)
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init-02-org.el ends here
+;;; init-10-org.el ends here

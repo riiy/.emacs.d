@@ -38,14 +38,15 @@
 
 ;;
 (require 'init-01-basic)
-(require 'init-02-org)
+(require 'init-02-packages)
 (require 'init-03-themes)
-(require 'init-04-packages)
+(require 'init-04-evil)
 (require 'init-05-ivy)
 (require 'init-06-smart-mode-line)
 (require 'init-07-undo-tree)
 (require 'init-08-multiple-cursors)
 (require 'init-09-develop)
+(require 'init-10-org)
 (provide 'init)
 
 ;;; init.el ends here
