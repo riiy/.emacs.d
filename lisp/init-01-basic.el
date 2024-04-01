@@ -19,13 +19,14 @@
 (when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
 (savehist-mode 1)                            ; （可选）打开 Buffer 历史记录保存
 (setq display-line-numbers-type 'relative)   ; （可选）显示相对行号
+(global-set-key (kbd "C-j") nil)
+(save-place-mode 1)
 ;; 国内镜像
 (require 'package)
 (setq package-archives '(("gnu"   . "http://mirrors.cloud.tencent.com/elpa/gnu/")
                          ("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")))
 (package-initialize)
-(global-set-key (kbd "C-j") nil)
-(save-place-mode 1)
+;; packages
 
 (provide 'init-01-basic)
 ;; Local Variables:

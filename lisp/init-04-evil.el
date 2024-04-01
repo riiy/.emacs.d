@@ -5,21 +5,18 @@
 
 ;;; Code:
 ;;C-z 切换 Emacs 按键模式和 Vim 按键模式
-(use-package evil
+(use-package
+  evil
   :ensure t
   :init
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1))
+  :config (evil-mode 1))
 
-(use-package evil-collection
-  :after evil
-  :ensure t
-  :config
-  (evil-collection-init))
+(use-package evil-collection :after evil :ensure t :config (evil-collection-init))
 
-(use-package evil-org
+(use-package
+  evil-org
   :ensure t
   :after org
   :hook (org-mode . (lambda () evil-org-mode))
