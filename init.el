@@ -11,7 +11,6 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory)) ; 设定源码加载路径
 
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
-(defconst *is-a-mac* (eq system-type 'darwin))
 
 ;; Adjust garbage collection thresholds during startup, and thereafter
 (let
@@ -32,10 +31,10 @@
 ;;
 (require 'init-01-basic)
 (require 'init-02-packages)
-(require 'init-03-themes)
+(require 'init-03-ui)
 (require 'init-04-evil)
 (require 'init-05-ivy)
-(require 'init-06-smart-mode-line)
+(require 'init-06-general)
 (require 'init-07-undo-tree)
 (require 'init-08-multiple-cursors)
 (require 'init-09-develop)

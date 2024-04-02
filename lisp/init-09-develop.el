@@ -130,6 +130,7 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
 
 (use-package
   c++-mode
+  :ensure t
   :functions ; suppress warnings
   c-toggle-hungry-state
   :hook (c-mode . lsp-deferred) (c++-mode . lsp-deferred) (c++-mode . c-toggle-hungry-state))
@@ -160,6 +161,7 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
   :hook (python-mode . (lambda () (require 'lsp-pyright) (lsp-deferred))))
 (use-package
   ccls
+  :ensure t
   :hook ((c-mode c++-mode objc-mode cuda-mode) . (lambda () (require 'ccls) (lsp))))
 
 (provide 'init-09-develop)
