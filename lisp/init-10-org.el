@@ -14,6 +14,8 @@
     org-id-locations-file
     (setq org-id-locations-file (expand-file-name ".orgids" org-directory)))
   (unless org-agenda-files (setq-default org-agenda-files (list org-directory)))
+  (setq org-log-done 'time)
+  (setq org-closed-keep-when-no-todo t)
   (setq
     org-indirect-buffer-display
     'current-window
