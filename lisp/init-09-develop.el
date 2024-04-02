@@ -130,7 +130,6 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
 
 (use-package
   c++-mode
-  :ensure t
   :functions ; suppress warnings
   c-toggle-hungry-state
   :hook (c-mode . lsp-deferred) (c++-mode . lsp-deferred) (c++-mode . c-toggle-hungry-state))
