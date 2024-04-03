@@ -11,9 +11,15 @@
   :init
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
-  :config (evil-mode 1))
+  :config (evil-mode 1) (evil-define-key 'normal 'global (kbd "gss") 'evil-avy-goto-char-2))
 
-(use-package evil-collection :after evil :ensure t :config (evil-collection-init))
+(use-package
+  evil-collection
+  :after evil
+  :ensure t
+  :config
+  (setq evil-want-integration t)
+  (evil-collection-init))
 
 (use-package
   evil-org
@@ -22,6 +28,15 @@
   :hook (org-mode . (lambda () evil-org-mode))
   :config
   (require 'evil-org-agenda)
+  (evil-define-key
+    'normal
+    org-mode-map
+    (kbd "TAB")
+    'org-cycle
+    ">"
+    'org-shiftmetaright
+    "<"
+    'org-shiftmetaleft)
   (evil-org-agenda-set-keys))
 
 (provide 'init-04-evil)
