@@ -33,6 +33,17 @@
 (use-package counsel :ensure t)
 (use-package which-key :ensure t :init (which-key-mode))
 
+;; 输入法pyim-wbdict
+(use-package popup :ensure t)
+(use-package
+  pyim-wbdict
+  :ensure t
+  :init
+  (require 'popup)
+  (setq pyim-default-scheme 'wubi)
+  (setq default-input-method "pyim")
+  :config (pyim-wbdict-v86-enable))
+
 (provide 'init-02-packages)
 ;; Local Variables:
 ;; coding: utf-8

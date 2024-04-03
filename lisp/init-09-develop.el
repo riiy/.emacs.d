@@ -43,9 +43,7 @@
 (use-package
   lsp-mode
   :ensure t
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l" lsp-file-watch-threshold 500)
+  :init (setq lsp-keymap-prefix "C-c b" lsp-file-watch-threshold 500)
   :hook
   (lsp-mode . lsp-enable-which-key-integration) ; which-key integration
   :commands (lsp lsp-deferred)
@@ -53,7 +51,7 @@
   (setq lsp-completion-provider :none) ;; 阻止 lsp 重新设置 company-backend 而覆盖我们 yasnippet 的设置
   (setq lsp-headerline-breadcrumb-enable t)
   :bind
-  ("C-c l s" . lsp-ivy-workspace-symbol)) ;; 可快速搜索工作区内的符号（类名、函数名、变量名等）
+  ("C-c b s" . lsp-ivy-workspace-symbol)) ;; 可快速搜索工作区内的符号（类名、函数名、变量名等）
 (use-package
   lsp-ui
   :ensure t
@@ -320,6 +318,10 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
+
+;; commentary
+(use-package evil-nerd-commenter :ensure t :config (evilnc-default-hotkeys))
+
 (provide 'init-09-develop)
 
 ;; Local Variables:

@@ -31,11 +31,6 @@
     ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize)
 ;;; packages
-;; 输入法pyim-wbdict
-(require 'pyim-wbdict)
-(setq pyim-default-scheme 'wubi)
-(setq default-input-method "pyim")
-(pyim-wbdict-v86-enable) ;86版五笔用户使用这个命令
 (provide 'init-01-basic)
 ;; Local Variables:
 ;; coding: utf-8
