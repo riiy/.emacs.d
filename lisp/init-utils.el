@@ -30,17 +30,14 @@
   :bind ("<f3>" . highlight-symbol)) ;; 按下 F3 键就可高亮当前符号
 
 ;; counsel
-(use-package counsel
+(use-package
+  counsel
   :ensure t
   :bind
-  (
-  ("M-x" . 'counsel-M-x) ; 使用 counsel 替换命令输入，给予更多提示
+  (("M-x" . 'counsel-M-x) ; 使用 counsel 替换命令输入，给予更多提示
     ("C-x C-f" . 'counsel-find-file) ; 使用 counsel 做文件打开操作，给予更多提示
     ("M-y" . 'counsel-yank-pop) ; 使用 counsel 做历史剪贴板粘贴，可以展示历史
-    :map
-    minibuffer-local-map
-    ("C-r" . counsel-minibuffer-history))
-  )
+    :map minibuffer-local-map ("C-r" . counsel-minibuffer-history)))
 (use-package which-key :ensure t :init (which-key-mode))
 
 ;; 输入法pyim-wbdict

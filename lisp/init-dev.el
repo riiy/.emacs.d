@@ -319,10 +319,7 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
-(use-package treemacs-nerd-icons
-  :ensure t
-  :config
-  (treemacs-load-theme "nerd-icons"))
+(use-package treemacs-nerd-icons :ensure t :config (treemacs-load-theme "nerd-icons"))
 ;; commentary
 (use-package evil-nerd-commenter :ensure t :config (evilnc-default-hotkeys))
 
