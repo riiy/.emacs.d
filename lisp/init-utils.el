@@ -52,6 +52,7 @@
   :bind ; 以下为绑定快捷键
   (("C-s" . 'swiper-isearch) ; 绑定快捷键 C-s 为 swiper-search，替换原本的搜索功能
     ("C-x b" . 'ivy-switch-buffer) ; 使用 ivy 做 buffer 切换，给予更多提示
+    ("C-c o" . 'ivy-occur)
     ("C-c v" . 'ivy-push-view) ; 记录当前 buffer 的信息
     ("C-c s" . 'ivy-switch-view) ; 切换到记录过的 buffer 位置
     ("C-c V" . 'ivy-pop-view) ; 移除 buffer 记录
