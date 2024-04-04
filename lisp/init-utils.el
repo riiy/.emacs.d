@@ -69,10 +69,10 @@
     ("u" undo-tree-visualize "visualize" :color blue)
     ("q" nil "quit" :color blue)))
 ;; Enable vertico
-(use-package vertico
+(use-package
+  vertico
   :ensure t
-  :init
-  (vertico-mode)
+  :init (vertico-mode)
 
   ;; Different scroll margin
   (setq vertico-scroll-margin 0)
@@ -84,16 +84,13 @@
   (setq vertico-resize t)
 
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
-  (setq vertico-cycle t)
-  )
+  (setq vertico-cycle t))
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
-(use-package savehist
-  :ensure t
-  :init
-  (savehist-mode))
+(use-package savehist :ensure t :init (savehist-mode))
 ;; A few more useful configurations...
-(use-package emacs
+(use-package
+  emacs
   :ensure t
   :init
   ;; Enable indentation+completion using the TAB key.
@@ -105,18 +102,18 @@
   (setq text-mode-ispell-word-completion nil)
   ;; Add prompt indicator to `completing-read-multiple'.
   ;; We display [CRM<separator>], e.g., [CRM,] if the separator is a comma.
-  (defun crm-indicator (args)
-    (cons (format "[CRM%s] %s"
-                  (replace-regexp-in-string
-                   "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
-                   crm-separator)
-                  (car args))
-          (cdr args)))
+  (defun
+    crm-indicator (args)
+    (cons
+      (format
+        "[CRM%s] %s"
+        (replace-regexp-in-string "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" "" crm-separator)
+        (car args))
+      (cdr args)))
   (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 
   ;; Do not allow the cursor in the minibuffer prompt
-  (setq minibuffer-prompt-properties
-        '(read-only t cursor-intangible t face minibuffer-prompt))
+  (setq minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
   ;; Support opening new minibuffers from inside existing minibuffers.
@@ -127,59 +124,68 @@
   ;; useful beyond Vertico.
   (setq read-extended-command-predicate #'command-completion-default-include-p))
 ;; Optionally use the `orderless' completion style.
-(use-package orderless
+(use-package
+  orderless
   :ensure t
   :init
   ;; Configure a custom style dispatcher (see the Consult wiki)
   ;; (setq orderless-style-dispatchers '(+orderless-consult-dispatch orderless-affix-dispatch)
   ;;       orderless-component-separator #'orderless-escapable-split-on-space)
-  (setq completion-styles '(orderless basic)
-        completion-category-defaults nil
-        completion-category-overrides '((file (styles partial-completion)))))
+  (setq
+    completion-styles
+    '(orderless basic)
+    completion-category-defaults
+    nil
+    completion-category-overrides
+    '((file (styles partial-completion)))))
 ;; Use Dabbrev with Corfu!
-(use-package dabbrev
+(use-package
+  dabbrev
   :ensure t
   ;; Swap M-/ and C-M-/
-  :bind (("M-/" . dabbrev-completion)
-         ("C-M-/" . dabbrev-expand))
-  :config
-  (add-to-list 'dabbrev-ignored-buffer-regexps "\\` ")
+  :bind (("M-/" . dabbrev-completion) ("C-M-/" . dabbrev-expand))
+  :config (add-to-list 'dabbrev-ignored-buffer-regexps "\\` ")
   ;; Since 29.1, use `dabbrev-ignored-buffer-regexps' on older.
   (add-to-list 'dabbrev-ignored-buffer-modes 'doc-view-mode)
   (add-to-list 'dabbrev-ignored-buffer-modes 'pdf-view-mode))
 ;; Consult users will also want the embark-consult package.
-(use-package embark-consult
+(use-package embark-consult :ensure t :defer t)
+(use-package
+  embark
   :ensure t
-  :defer t)
-(use-package embark
-  :ensure t
-  :bind (:map minibuffer-local-map
-         ("M-o"     . embark-act)
-         ("C-c C-c" . embark-export)
-         ("C-c C-o" . embark-collect)))
+  :bind
+  (:map
+    minibuffer-local-map
+    ("M-o" . embark-act)
+    ("C-c C-c" . embark-export)
+    ("C-c C-o" . embark-collect)))
 
-(use-package consult
+(use-package
+  consult
   :ensure t
-  :bind (([remap imenu]                  . consult-imenu)
-         ([remap goto-line]              . consult-goto-line)
-         ([remap bookmark-jump]          . consult-bookmark)
-         ([remap recentf-open-files]     . consult-recent-file)
-         ([remap repeat-complex-command] . consult-complex-command)
-         ([remap jump-to-register]       . consult-register-load)
-         ([remap point-to-register]      . consult-register-store))
+  :bind
+  (([remap imenu] . consult-imenu)
+    ([remap goto-line] . consult-goto-line)
+    ([remap bookmark-jump] . consult-bookmark)
+    ([remap recentf-open-files] . consult-recent-file)
+    ([remap repeat-complex-command] . consult-complex-command)
+    ([remap jump-to-register] . consult-register-load)
+    ([remap point-to-register] . consult-register-store))
   :config
   (with-no-warnings
-    (consult-customize consult-ripgrep consult-git-grep consult-grep
-                       consult-bookmark
-                       consult-recent-file
-                       consult-buffer
-                       :preview-key nil))
+    (consult-customize
+      consult-ripgrep
+      consult-git-grep
+      consult-grep
+      consult-bookmark
+      consult-recent-file
+      consult-buffer
+      :preview-key nil))
 
   ;; Optionally configure the register formatting. This improves the register
   ;; preview for `consult-register', `consult-register-load',
   ;; `consult-register-store' and the Emacs built-ins.
-  (setq register-preview-delay 0.5
-        register-preview-function #'consult-register-format)
+  (setq register-preview-delay 0.5 register-preview-function #'consult-register-format)
 
   ;; Optionally tweak the register preview window.
   ;; This adds thin lines, sorting and hides the mode line of the window.
