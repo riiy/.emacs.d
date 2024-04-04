@@ -29,16 +29,13 @@
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
 ;;
-(require 'init-01-basic)
-(require 'init-02-packages)
-(require 'init-03-ui)
-(require 'init-04-evil)
-(require 'init-05-ivy)
-(require 'init-06-general)
-(require 'init-07-undo-tree)
-(require 'init-08-multiple-cursors)
-(require 'init-09-develop)
-(require 'init-10-org)
+(require 'init-basic)
+(require 'init-ui)
+(require 'init-utils)
+(require 'init-evil)
+(require 'init-general)
+(require 'init-dev)
+(require 'init-org)
 (provide 'init)
 
 ;;; init.el ends here

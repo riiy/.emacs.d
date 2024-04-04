@@ -59,7 +59,6 @@
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   (setq lsp-ui-doc-position 'top))
-(use-package lsp-ivy :ensure t :after (lsp-mode))
 
 (use-package
   dap-mode
@@ -115,16 +114,18 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
     ("es" dap-eval-thing-at-point)
     ("q" nil "quit" :color blue)
     ("Q" dap-disconnect :color red)))
+
 (use-package
   projectile
   :ensure t
-  :bind (("C-c p" . projectile-command-map))
+  :bind (("C-c C-p" . projectile-command-map))
   :config
   (setq projectile-mode-line "Projectile")
   (setq projectile-track-known-projects-automatically nil))
 
 (use-package counsel-projectile :ensure t :after (projectile) :init (counsel-projectile-mode))
 (use-package magit :ensure t)
+(use-package rg :ensure t)
 
 (use-package
   c++-mode
@@ -318,14 +319,17 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
-
+(use-package treemacs-nerd-icons
+  :ensure t
+  :config
+  (treemacs-load-theme "nerd-icons"))
 ;; commentary
 (use-package evil-nerd-commenter :ensure t :config (evilnc-default-hotkeys))
 
-(provide 'init-09-develop)
+(provide 'init-dev)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init-09-develop.el ends here
+;;; init-dev.el ends here

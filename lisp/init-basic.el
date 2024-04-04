@@ -16,11 +16,11 @@
 (add-hook 'prog-mode-hook #'hs-minor-mode) ; 编程模式下，可以折叠代码块
 (global-display-line-numbers-mode 1) ; 在 Window 显示行号
 (tool-bar-mode -1) ; （熟练后可选）关闭 Tool bar
-(when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
-(savehist-mode 1) ; （可选）打开 Buffer 历史记录保存
-(setq display-line-numbers-type 'relative) ; （可选）显示相对行号
-(global-set-key (kbd "C-j") nil)
+; (when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
+; (savehist-mode 1) ; （可选）打开 Buffer 历史记录保存
 (save-place-mode 1)
+(setq display-line-numbers-type 'relative) ; （可选）显示相对行号
+; (global-set-key (kbd "C-j") nil)
 ;; 国内镜像
 (require 'package)
 (setq
@@ -31,9 +31,9 @@
     ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize)
 ;;; packages
-(provide 'init-01-basic)
+(provide 'init-basic)
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init-01-basic.el ends here
+;;; init-basic.el ends here

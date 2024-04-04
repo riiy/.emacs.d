@@ -1,4 +1,4 @@
-;;; init-02-packages.el --- Load the full configuration -*- lexical-binding: t -*-
+;;; init-utils.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;; 设置内容比较少的插件
@@ -30,7 +30,17 @@
   :bind ("<f3>" . highlight-symbol)) ;; 按下 F3 键就可高亮当前符号
 
 ;; counsel
-(use-package counsel :ensure t)
+(use-package counsel
+  :ensure t
+  :bind
+  (
+  ("M-x" . 'counsel-M-x) ; 使用 counsel 替换命令输入，给予更多提示
+    ("C-x C-f" . 'counsel-find-file) ; 使用 counsel 做文件打开操作，给予更多提示
+    ("M-y" . 'counsel-yank-pop) ; 使用 counsel 做历史剪贴板粘贴，可以展示历史
+    :map
+    minibuffer-local-map
+    ("C-r" . counsel-minibuffer-history))
+  )
 (use-package which-key :ensure t :init (which-key-mode))
 
 ;; 输入法pyim-wbdict
@@ -44,7 +54,25 @@
   (setq default-input-method "pyim")
   :config (pyim-wbdict-v86-enable))
 
-(provide 'init-02-packages)
+(use-package
+  undo-tree
+  :ensure t
+  :init (global-undo-tree-mode)
+  :after hydra
+  :bind ("C-u" . hydra-undo-tree/body)
+  :hydra
+  (hydra-undo-tree
+    (:hint nil)
+    "
+  _p_: undo  _n_: redo _s_: save _l_: load   "
+    ("p" undo-tree-undo)
+    ("n" undo-tree-redo)
+    ("s" undo-tree-save-history)
+    ("l" undo-tree-load-history)
+    ("u" undo-tree-visualize "visualize" :color blue)
+    ("q" nil "quit" :color blue)))
+
+(provide 'init-utils)
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t

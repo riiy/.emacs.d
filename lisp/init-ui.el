@@ -1,12 +1,11 @@
-;;; init-03-ui.el --- Load the full configuration -*- lexical-binding: t -*-
+;;; init-ui.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;; doom-themes
 
 ;;; Code:
-;; M-x all-the-icons-install-fonts
 
-(use-package all-the-icons)
+(use-package nerd-icons :ensure t :custom (nerd-icons-font-family "Symbols Nerd Font Mono"))
 
 (use-package doom-modeline :ensure t :init (doom-modeline-mode 1))
 
@@ -22,13 +21,12 @@
 
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  ;(doom-themes-neotree-config)
-  ;; or for treemacs users
-  ;(setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  ;(doom-themes-treemacs-config)
+  ;; for treemacs users
+  (setq doom-themes-treemacs-theme "doom-one") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+
 ;; 用不同颜色标记多级括号
 (use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
 
@@ -49,12 +47,11 @@
   (setq
     dashboard-item-shortcuts
     '((recents . "r") (bookmarks . "m") (projects . "p") (agenda . "a") (registers . "e")))
-  (setq dashboard-icon-type 'all-the-icons)
   (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
   (dashboard-setup-startup-hook))
-(provide 'init-03-ui)
+(provide 'init-ui)
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init-03-ui.el ends here
+;;; init-ui.el ends here

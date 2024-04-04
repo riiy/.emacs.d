@@ -1,4 +1,4 @@
-;;; init-10-org.el --- Load the full configuration -*- lexical-binding: t -*-
+;;; init-org.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -106,9 +106,27 @@
       ("KILL" . +org-todo-cancel)))
   :bind (("C-c a" . 'org-agenda) :map org-mode-map ("C-c C-q" . counsel-org-tag)))
 
-(provide 'init-10-org)
+(use-package
+  evil-org
+  :ensure t
+  :after org
+  :hook (org-mode . (lambda () evil-org-mode))
+  :config
+  (require 'evil-org-agenda)
+  (evil-define-key
+    'normal
+    org-mode-map
+    (kbd "TAB")
+    'org-cycle
+    ">"
+    'org-shiftmetaright
+    "<"
+    'org-shiftmetaleft)
+  (evil-org-agenda-set-keys))
+
+(provide 'init-org)
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init-10-org.el ends here
+;;; init-org.el ends here

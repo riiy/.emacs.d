@@ -1,4 +1,4 @@
-;;; init-04-evil.el --- Load the full configuration -*- lexical-binding: t -*-
+;;; init-evil.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;; 设置内容比较少的插件
@@ -17,31 +17,14 @@
   evil-collection
   :after evil
   :ensure t
+  :custom (evil-collection-setup-minibuffer t)
   :config
   (setq evil-want-integration t)
   (evil-collection-init))
 
-(use-package
-  evil-org
-  :ensure t
-  :after org
-  :hook (org-mode . (lambda () evil-org-mode))
-  :config
-  (require 'evil-org-agenda)
-  (evil-define-key
-    'normal
-    org-mode-map
-    (kbd "TAB")
-    'org-cycle
-    ">"
-    'org-shiftmetaright
-    "<"
-    'org-shiftmetaleft)
-  (evil-org-agenda-set-keys))
-
-(provide 'init-04-evil)
+(provide 'init-evil)
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init-04-evil.el ends here
+;;; init-evil.el ends here

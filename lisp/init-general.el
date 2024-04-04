@@ -1,4 +1,4 @@
-;;; init-06-general.el --- Load the full configuration -*- lexical-binding: t -*-
+;;; init-general.el --- Load the full configuration -*- lexical-binding: t -*-
 ;;; Commentary:
 ;; 定制快捷键
 ;;; Code:
@@ -35,9 +35,9 @@
     '(org-todo-list :which-key "org todo"))
   (rune/leader-keys "f" '(:ignore f :which-key "File") "fs" '(save-buffer :which-key "Save File")))
 
-(provide 'init-06-general)
+(provide 'init-general)
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: t
 ;; End:
-;;; init-06-general.el ends here
+;;; init-general.el ends here
