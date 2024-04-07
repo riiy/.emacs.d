@@ -29,6 +29,8 @@
   (("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
     ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
     ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+;; (when (not package-archive-contents)
+;;     (package-refresh-contents))
 (package-initialize)
 ;;; packages
 (provide 'init-basic)
