@@ -7,7 +7,7 @@
 ;; amx 记录我们每次调用 M-x 时输入的命令历史，然后每次将最常用的显示在前面
 (use-package amx :ensure t :init (amx-mode))
 ;; ace-window 对 C-x o 重新绑定，使用时可以为每个 window 编个号，用编号进行跳转
-;; (use-package ace-window :ensure t :bind (("C-x o" . 'ace-window)))
+(use-package ace-window :ensure t :bind (("C-x o" . 'ace-window)))
 
 ;; avy 快速光标跳转
 (use-package avy :ensure t :bind (("C-;" . avy-goto-char-timer)))
