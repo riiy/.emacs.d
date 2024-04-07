@@ -14,6 +14,23 @@
     org-id-locations-file
     (setq org-id-locations-file (expand-file-name ".orgids" org-directory)))
   (unless org-agenda-files (setq-default org-agenda-files (list org-directory)))
+  (setq-default
+    ;; Different colors for different priority levels
+    org-agenda-deadline-faces
+    '
+    ((1.001 . error)
+      (1.0 . org-warning)
+      (0.5 . org-upcoming-deadline)
+      (0.0 . org-upcoming-distant-deadline))
+    ;; Don't monopolize the whole frame just for the agenda
+    org-agenda-window-setup 'current-window org-agenda-skip-unavailable-files t
+    ;; Shift the agenda to show the previous 3 days and the next 7 days for
+    ;; better context on your week. The past is less important than the future.
+    org-agenda-span 10 org-agenda-start-on-weekday nil org-agenda-start-day "-3d"
+    ;; Optimize `org-agenda' by inhibiting extra work while opening agenda
+    ;; buffers in the background. They'll be "restarted" if the user switches to
+    ;; them anyway (see `+org-exclude-agenda-buffers-from-workspace-h')
+    org-agenda-inhibit-startup t)
   (setq org-log-done 'time)
   (setq org-closed-keep-when-no-todo t)
   (setq
