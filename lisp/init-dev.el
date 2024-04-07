@@ -71,6 +71,13 @@
 
 (use-package counsel-projectile :ensure t :after (projectile) :init (counsel-projectile-mode))
 (use-package magit :ensure t)
+(use-package
+  diff-hl
+  :hook
+  (('magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+    ('magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+  :ensure t
+  :config (global-diff-hl-mode) (diff-hl-margin-mode) (diff-hl-dir-mode))
 (use-package rg :ensure t)
 
 (use-package
