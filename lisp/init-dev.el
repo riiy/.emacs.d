@@ -278,6 +278,8 @@
 
 (use-package treemacs-nerd-icons :ensure t :config (treemacs-load-theme "nerd-icons"))
 
+(use-package restclient :ensure t)
+
 (provide 'init-dev)
 
 ;; Local Variables:
