@@ -85,10 +85,7 @@
   python
   :defer t
   :mode ("\\.py\\'" . python-mode)
-  :interpreter ("python3" . python-mode)
-  :config
-  ;; for debug
-  (require 'dap-python))
+  :interpreter ("python3" . python-mode))
 
 (use-package
   pyvenv
