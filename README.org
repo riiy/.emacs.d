@@ -1,0 +1,7 @@
+* Emacs 配置
+** 使用方法
+#begin_srcs bash
+git clone git@github.com:riiy/.emacs.d.git ~/.emacs.d
+#end_srcs
+** 遇到的问题及解决方案
+－nerd-icons 显示错误，terminal终端配置字体
