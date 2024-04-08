@@ -14,7 +14,7 @@
 (setq inhibit-startup-message t) ; 关闭启动 Emacs 时的欢迎界面
 (setq make-backup-files nil) ; 关闭文件自动备份
 (add-hook 'prog-mode-hook #'hs-minor-mode) ; 编程模式下，可以折叠代码块
-;; (global-display-line-numbers-mode 1) ; 在 Window 显示行号
+(global-display-line-numbers-mode 1) ; 在 Window 显示行号
 (tool-bar-mode -1) ; （熟练后可选）关闭 Tool bar
 ; (when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
 ; (savehist-mode 1) ; （可选）打开 Buffer 历史记录保存
