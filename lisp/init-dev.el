@@ -224,10 +224,6 @@
       treemacs-workspace-switch-cleanup
       nil)
 
-    ;; The default width and height of the icons is 22 pixels. If you are
-    ;; using a Hi-DPI display, uncomment this to double the icon size.
-    ;;(treemacs-resize-icons 44)
-
     (treemacs-follow-mode t)
     (treemacs-filewatch-mode t)
     (treemacs-fringe-indicator-mode 'always)
@@ -253,12 +249,6 @@
 (use-package treemacs-evil :ensure t :after (treemacs evil) :ensure t)
 
 (use-package treemacs-projectile :ensure t :after (treemacs projectile) :ensure t)
-
-(use-package
-  treemacs-icons-dired
-  :ensure t
-  :hook (dired-mode . treemacs-icons-dired-enable-once)
-  :ensure t)
 
 (use-package treemacs-magit :ensure t :after (treemacs magit) :ensure t)
 
