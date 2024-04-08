@@ -66,7 +66,7 @@
   :ensure t
   :config
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c M-p") 'projectile-command-map)
   (projectile-mode +1)
   (setq projectile-mode-line "Projectile")
   (setq projectile-track-known-projects-automatically nil))
