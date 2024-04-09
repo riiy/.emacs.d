@@ -262,6 +262,16 @@
 (use-package treemacs-nerd-icons :ensure t :config (treemacs-load-theme "nerd-icons"))
 
 (use-package restclient :ensure t :mode (("\\.http\\'" . restclient-mode)))
+(use-package
+  beancount
+  :load-path "site-lisp/package/beancount-mode" ;; git@github.com:beancount/beancount-mode.git
+  :init
+  (add-hook 'beancount-mode-hook (lambda () (setq-local electric-indent-chars nil)))
+  (add-hook 'beancount-mode-hook #'flymake-bean-check-enable)
+  :mode (("\\.beancount\\'" . beancount-mode))
+  :config
+  (define-key beancount-mode-map (kbd "C-c C-n") #'outline-next-visible-heading)
+  (define-key beancount-mode-map (kbd "C-c C-p") #'outline-previous-visible-heading))
 
 (provide 'init-dev)
 
