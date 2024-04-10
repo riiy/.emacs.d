@@ -64,14 +64,8 @@
 (use-package
   projectile
   :ensure t
-  :config
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
-  (projectile-mode +1)
-  (setq projectile-completion-system 'ivy)
-  (setq projectile-mode-line "Projectile")
-  (setq projectile-track-known-projects-automatically nil))
-
+  :init (projectile-mode +1)
+  :bind (:map projectile-mode-map ("s-p" . projectile-command-map) ("C-c p" . projectile-command-map)))
 (use-package counsel-projectile :ensure t :after (projectile) :init (counsel-projectile-mode))
 (use-package magit :ensure t)
 (use-package diff-hl :ensure t :config (global-diff-hl-mode) (diff-hl-margin-mode))
