@@ -28,13 +28,14 @@
 ;; Bootstrap config
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
-;;
+;; 加载扩展
 (require 'init-basic)
 (require 'init-ui)
 (require 'init-utils)
 (require 'init-evil)
 (require 'init-general)
 (require 'init-dev)
+;; (require 'init-treemacs)
 (require 'init-org)
 (provide 'init)
 
