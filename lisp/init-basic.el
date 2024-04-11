@@ -16,14 +16,15 @@
 (add-hook 'prog-mode-hook #'hs-minor-mode) ; 编程模式下，可以折叠代码块
 (global-display-line-numbers-mode 1) ; 在 Window 显示行号
 (tool-bar-mode -1) ; （熟练后可选）关闭 Tool bar
-; (when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
+(when (display-graphic-p) (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized))))))
+(when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
+(when (display-graphic-p) (set-face-attribute 'default nil :font (font-spec :family "FiraMono Nerd Font Mono" :weight 'medium)))
 ; (savehist-mode 1) ; （可选）打开 Buffer 历史记录保存
 (setq display-line-numbers-type 'relative) ; （可选）显示相对行号
 ;; 终端Emacs滚动时的闪烁问题
 (setq visible-cursor nil)
 ;; 保存上次打开位置
 (save-place-mode 1)
-; (global-set-key (kbd "C-j") nil)
 ;; 国内镜像
 (require 'package)
 (setq
