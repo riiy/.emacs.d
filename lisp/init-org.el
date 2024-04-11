@@ -264,10 +264,18 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
     'org-shiftmetaleft)
   (evil-org-agenda-set-keys))
 
+;; markdown
+(use-package
+  markdown-mode
+  :ensure t
+  :mode ("README\\.md\\'" . gfm-mode)
+  :init (setq markdown-command "multimarkdown")
+  :bind (:map markdown-mode-map ("C-c C-e" . markdown-do)))
+
 ;; 记账用
 (use-package
   beancount
-  :load-path "site-lisp/package/beancount-mode" ;; git@github.com:beancount/beancount-mode.git
+  :straight '(beancount :host github :repo "beancount/beancount-mode")
   :init
   (add-hook 'beancount-mode-hook (lambda () (setq-local electric-indent-chars nil)))
   (add-hook 'beancount-mode-hook #'flymake-bean-check-enable)
@@ -275,7 +283,6 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   :config
   (define-key beancount-mode-map (kbd "C-c C-n") #'outline-next-visible-heading)
   (define-key beancount-mode-map (kbd "C-c C-p") #'outline-previous-visible-heading))
-
 
 (provide 'init-org)
 ;; Local Variables:
