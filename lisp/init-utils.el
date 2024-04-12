@@ -90,7 +90,9 @@
     ("l" undo-tree-load-history)
     ("u" undo-tree-visualize "visualize" :color blue)
     ("q" nil "quit" :color blue)))
-
+(use-package
+  recentf
+  :config (progn (setq recentf-max-saved-items 200 recentf-max-menu-items 15) (recentf-mode)))
 (provide 'init-utils)
 ;; Local Variables:
 ;; coding: utf-8
