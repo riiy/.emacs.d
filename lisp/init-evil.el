@@ -22,6 +22,8 @@
   (setq evil-want-integration t)
   (evil-collection-init))
 
+;; commentary
+(use-package evil-nerd-commenter :ensure t :config (evilnc-default-hotkeys))
 (provide 'init-evil)
 ;; Local Variables:
 ;; coding: utf-8
