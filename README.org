@@ -4,8 +4,4 @@
 git clone git@github.com:riiy/.emacs.d.git ~/.emacs.d
 #+end_src
 ** 遇到的问题及解决方案
-- beancount 问题
-#+begin_src bash
-cd ~/.emacs.d/site-lisp/package && git clone git@github.com:beancount/beancount-mode.git
-#+end_src
 - nerd-icons 显示错误，terminal终端配置字体
