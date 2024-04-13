@@ -9,7 +9,6 @@
 
 (use-package doom-modeline :ensure t :init (doom-modeline-mode 1))
 
-;; theme
 (load-theme 'manoj-dark)
 ;; (load-theme 'modus-vivendi)
 ;; (load-theme 'wheatgrass)
