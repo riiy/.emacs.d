@@ -32,6 +32,7 @@
 (setq visible-cursor nil)
 ;; 保存上次打开位置
 (save-place-mode 1)
+(setq enable-local-variables nil)
 ;; 国内镜像
 (require 'package)
 (setq
@@ -40,8 +41,7 @@
   (("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
     ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
     ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-;; (when (not package-archive-contents)
-;;     (package-refresh-contents))
+(when (not package-archive-contents) (package-refresh-contents))
 (package-initialize)
 (defvar bootstrap-version)
 (let
