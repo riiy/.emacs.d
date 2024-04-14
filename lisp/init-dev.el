@@ -32,7 +32,10 @@
       :colorProvider
       :foldingRangeProvider))
   (eglot-stay-out-of '(yasnippet))
-  :config (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio"))))
+  :config
+  ;; Python specific
+  (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
+  (setq-default eglot-workspace-configuration '((:pyright . ((useLibraryCodeForTypes . t))))))
 
 (provide 'init-dev)
 
