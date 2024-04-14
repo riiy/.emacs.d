@@ -9,8 +9,8 @@
 
 (use-package doom-modeline :ensure t :init (doom-modeline-mode 1))
 
-(load-theme 'manoj-dark)
-;; (load-theme 'modus-vivendi)
+;; (load-theme 'manoj-dark)
+(load-theme 'modus-vivendi)
 ;; (load-theme 'wheatgrass)
 
 ;; 用不同颜色标记多级括号
