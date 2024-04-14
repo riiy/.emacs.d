@@ -9,9 +9,7 @@
 
 (use-package doom-modeline :ensure t :init (doom-modeline-mode 1))
 
-(load-theme 'manoj-dark)
-(when (display-graphic-p) (load-theme 'dracula t))
-
+(if (display-graphic-p) (progn (load-theme 'dracula t)) (load-theme 'manoj-dark))
 
 ;; 用不同颜色标记多级括号
 (use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
