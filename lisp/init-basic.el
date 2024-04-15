@@ -26,13 +26,13 @@
     'default
     nil
     :font (font-spec :family "FiraMono Nerd Font Mono" :size 15 :weight 'medium)))
-; (savehist-mode 1) ; （可选）打开 Buffer 历史记录保存
+(savehist-mode 1) ; （可选）打开 Buffer 历史记录保存
 (setq display-line-numbers-type 'relative) ; （可选）显示相对行号
 ;; 终端Emacs滚动时的闪烁问题
 (setq visible-cursor nil)
 ;; 保存上次打开位置
 (save-place-mode 1)
-(setq enable-local-variables nil)
+;; (setq enable-local-variables nil) ; 允许局部变量
 ;; 国内镜像
 (require 'package)
 (setq
