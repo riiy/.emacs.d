@@ -197,10 +197,51 @@
 (use-package
   orderless
   :ensure t
-  :init
+  :config
+  (defvar
+    +orderless-dispatch-alist
+    '
+    ((?% . char-fold-to-regexp)
+      (?! . orderless-without-literal)
+      (?`. orderless-initialism)
+      (?= . orderless-literal)
+      (?~ . orderless-flex)))
+
+  (defun
+    +orderless-dispatch (pattern index _total)
+    (cond
+      ;; Ensure that $ works with Consult commands, which add disambiguation suffixes
+      ((string-suffix-p "$" pattern)
+        `(orderless-regexp . ,(concat (substring pattern 0 -1) "[\x100000-\x10FFFD]*$")))
+      ;; File extensions
+      (
+        (and
+          ;; Completing filename or eshell
+          (or minibuffer-completing-file-name (derived-mode-p 'eshell-mode))
+          ;; File extension
+          (string-match-p "\\`\\.." pattern))
+        `(orderless-regexp . ,(concat "\\." (substring pattern 1) "[\x100000-\x10FFFD]*$")))
+      ;; Ignore single !
+      ((string= "!" pattern)
+        `(orderless-literal . ""))
+      ;; Prefix and suffix
+      (
+        (if-let
+          (
+            x
+            (assq (aref pattern 0) +orderless-dispatch-alist))
+          (cons (cdr x) (substring pattern 1))
+          (when-let
+            (
+              x
+              (assq (aref pattern (1- (length pattern))) +orderless-dispatch-alist))
+            (cons (cdr x) (substring pattern 0 -1)))))))
   ;; Configure a custom style dispatcher (see the Consult wiki)
-  (setq orderless-style-dispatchers '(+orderless-dispatch)
-        orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq
+    orderless-style-dispatchers
+    '(+orderless-dispatch)
+    orderless-component-separator
+    #'orderless-escapable-split-on-space)
   (setq
     completion-styles
     '(orderless basic)
