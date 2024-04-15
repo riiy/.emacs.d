@@ -20,7 +20,6 @@
   (setq gc-cons-threshold init-gc-cons-threshold)
   (add-hook 'emacs-startup-hook (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
 
-
 ;; Process performance tuning
 (setq read-process-output-max (* 4 1024 1024))
 (setq process-adaptive-read-buffering nil)
@@ -34,7 +33,7 @@
 (require 'init-utils)
 (require 'init-complete)
 (require 'init-evil)
-(require 'init-general)
+;; (require 'init-general)
 (require 'init-dev)
 ;; (require 'init-treemacs)
 (require 'init-org)
