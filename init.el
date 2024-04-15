@@ -32,6 +32,7 @@
 (require 'init-basic)
 (require 'init-ui)
 (require 'init-utils)
+(require 'init-complete)
 (require 'init-evil)
 (require 'init-general)
 (require 'init-dev)
