@@ -58,20 +58,14 @@
 (use-package
   recentf
   :config (progn (setq recentf-max-saved-items 200 recentf-max-menu-items 15) (recentf-mode)))
-
-(use-package
-  flycheck
-  :ensure t
-  :config
-  (setq truncate-lines nil) ; 如果单行信息很长会自动换行
-  :hook (prog-mode . flycheck-mode))
-
-;; version conctrl
 (use-package magit :ensure t)
 (use-package diff-hl :ensure t :config (global-diff-hl-mode) (diff-hl-margin-mode))
 (use-package rg :ensure t)
 ;; restclient
 (use-package restclient :ensure t :mode (("\\.http\\'" . restclient-mode)))
+
+(use-package savehist :ensure t :init (savehist-mode))
+
 (provide 'init-utils)
 ;; Local Variables:
 ;; coding: utf-8
