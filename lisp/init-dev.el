@@ -35,6 +35,8 @@
   :config
   ;; Python specific
   (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
+  (setq lsp-pyright-use-library-code-for-types t) 
+  (setq lsp-pyright-stub-path (concat (getenv "HOME") "/wokspc/python-type-stubs"))
   (setq-default eglot-workspace-configuration '((:pyright . ((useLibraryCodeForTypes . t))))))
 
 (provide 'init-dev)
