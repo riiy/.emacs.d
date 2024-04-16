@@ -8,8 +8,7 @@
 (use-package nerd-icons :ensure t :custom (nerd-icons-font-family "Symbols Nerd Font Mono"))
 
 (use-package doom-modeline :ensure t :init (doom-modeline-mode 1))
-
-(if (display-graphic-p) (progn (load-theme 'dracula t)) (load-theme 'manoj-dark))
+(load-theme 'dracula t)
 
 ;; 用不同颜色标记多级括号
 (use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
