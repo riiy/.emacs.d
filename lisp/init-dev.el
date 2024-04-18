@@ -2,6 +2,11 @@
 ;;; Commentary:
 
 ;;; Code:
+;; python
+(setq tab-width 4)
+(set-variable 'python-indent-offset 4)
+(set-variable 'python-indent-guess-indent-offset nil)
+;; eglot
 (use-package
   eglot
   :ensure t
