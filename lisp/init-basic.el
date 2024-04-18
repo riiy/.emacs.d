@@ -5,7 +5,7 @@
 
 ;;; Code:
 (menu-bar-mode -1)
-;; (setq confirm-kill-emacs #'yes-or-no-p) ; 在关闭 Emacs 前询问是否确认关闭，防止误触
+(setq confirm-kill-emacs #'yes-or-no-p) ; 在关闭 Emacs 前询问是否确认关闭，防止误触
 (electric-pair-mode t) ; 自动补全括号
 (add-hook 'prog-mode-hook #'show-paren-mode) ; 编程模式下，光标在括号上时高亮另一个括号
 (column-number-mode t) ; 在 Mode line 上显示列号
