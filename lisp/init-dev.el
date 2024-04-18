@@ -3,6 +3,8 @@
 
 ;;; Code:
 ;; python
+(setq-default truncate-lines t)
+(add-hook 'python-mode-hook (lambda () (setq truncate-lines t)))
 (setq tab-width 4)
 (set-variable 'python-indent-offset 4)
 (set-variable 'python-indent-guess-indent-offset nil)
