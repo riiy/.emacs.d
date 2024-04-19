@@ -5,14 +5,10 @@
 
 ;;; Code:
 
-(use-package nerd-icons :ensure t :custom (nerd-icons-font-family "Symbols Nerd Font Mono"))
-
-(use-package doom-modeline :ensure t :init (doom-modeline-mode 1))
+;; themes
 (load-theme 'dracula t)
-
 ;; 用不同颜色标记多级括号
 (use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
-(use-package nerd-icons-dired :ensure t :hook (dired-mode . nerd-icons-dired-mode))
 
 (provide 'init-ui)
 ;; Local Variables:
