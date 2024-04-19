@@ -6,6 +6,7 @@
 ;;; Code:
 
 ;; themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
 ;; 用不同颜色标记多级括号
 (use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
