@@ -33,10 +33,14 @@
 (require 'init-utils)
 (require 'init-complete)
 (require 'init-evil)
-;; (require 'init-general)
 (require 'init-dev)
-;; (require 'init-treemacs)
 (require 'init-org)
+
+;; 导出
 (provide 'init)
 
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: t
+;; End:
 ;;; init.el ends here
