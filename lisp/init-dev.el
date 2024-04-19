@@ -8,13 +8,19 @@
 (setq tab-width 4)
 (set-variable 'python-indent-offset 4)
 (set-variable 'python-indent-guess-indent-offset nil)
+(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 ;; eglot
 (use-package
   eglot
   :ensure t
   :defer t
   :bind (:map eglot-mode-map ("C-c C-r" . eglot-rename))
-  :hook (((python-mode) . eglot-ensure))
+  :hook
+  ((python-ts-mode . eglot-ensure)
+    (python-ts-mode . flyspell-prog-mode)
+    (python-ts-mode . superword-mode)
+    (python-ts-mode . hs-minor-mode)
+    (python-ts-mode . (lambda () (set-fill-column 240))))
   :custom
   (eglot-autoshutdown t)
   (eglot-events-buffer-size 0)

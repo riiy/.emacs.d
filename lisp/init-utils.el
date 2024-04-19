@@ -33,11 +33,7 @@
   (setq default-input-method "pyim")
   :config (pyim-wbdict-v86-enable))
 ;; unto-tree
-(use-package
-  undo-tree
-  :ensure t
-  :init (global-undo-tree-mode)
-  :bind ("C-u" . undo-tree-visualize))
+(use-package undo-tree :ensure t :init (global-undo-tree-mode) :bind ("C-u" . undo-tree-visualize))
 
 (use-package
   recentf
