@@ -14,7 +14,7 @@
   eglot
   :ensure t
   :defer t
-  :bind (:map eglot-mode-map ("C-c C-r" . eglot-rename))
+  :bind (:map eglot-mode-map ("C-c M-n" . eglot-rename))
   :hook
   ((python-ts-mode . eglot-ensure)
     (python-ts-mode . flyspell-prog-mode)
