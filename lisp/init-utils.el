@@ -17,9 +17,13 @@
 ;; 这个插件可以高亮出当前 Buffer 中所有的、与光标所在处的符号相同的符号。
 (use-package
   highlight-symbol
-  :ensure t
-  :init (highlight-symbol-mode)
-  :bind ("<f3>" . highlight-symbol)) ;; 按下 F3 键就可高亮当前符号
+  :ensure
+  t
+  :init
+  (add-hook 'prog-mode-hook (lambda () (highlight-symbol-mode 1)))
+  (add-hook 'prog-mode-hook (lambda () (highlight-symbol-nav-mode 1)))
+  :config (setq highlight-symbol-idle-delay 1.0 highlight-symbol-on-navigation-p t)
+  :diminish highlight-symbol-mode)
 ;; which-key
 (use-package which-key :ensure t :init (which-key-mode))
 ;; 输入法pyim-wbdict
