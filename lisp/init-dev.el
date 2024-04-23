@@ -21,8 +21,6 @@
   :bind (:map eglot-mode-map ("C-c M-n" . eglot-rename))
   :hook
   ((python-ts-mode . eglot-ensure)
-    (python-ts-mode . flyspell-prog-mode)
-    (python-ts-mode . superword-mode)
     (python-ts-mode . hs-minor-mode)
     (python-ts-mode . (lambda () (set-fill-column 240))))
   :custom
