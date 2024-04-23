@@ -17,8 +17,7 @@
 ;; 这个插件可以高亮出当前 Buffer 中所有的、与光标所在处的符号相同的符号。
 (use-package
   highlight-symbol
-  :ensure
-  t
+  :ensure t
   :init
   (add-hook 'prog-mode-hook (lambda () (highlight-symbol-mode 1)))
   (add-hook 'prog-mode-hook (lambda () (highlight-symbol-nav-mode 1)))
