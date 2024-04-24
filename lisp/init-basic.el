@@ -60,7 +60,20 @@
         'inhibit-cookies)
       (goto-char (point-max)) (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
-
+;; 光标接近屏幕底部不再跳到屏幕中间
+(setq
+  scroll-margin
+  3
+  scroll-conservatively
+  101
+  scroll-up-aggressively
+  0.01
+  scroll-down-aggressively
+  0.01
+  scroll-preserve-screen-position
+  t
+  auto-window-vscroll
+  nil)
 ;;; packages
 (provide 'init-basic)
 ;; Local Variables:
