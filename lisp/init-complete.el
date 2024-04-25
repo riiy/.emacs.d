@@ -140,6 +140,7 @@
   ;; Optionally configure the narrowing key.
   ;; Both < and C-+ work reasonably well.
   (setq consult-narrow-key "<") ;; "C-+"
+  (setq consult-async-min-input 2) ;; 只需敲 2 个字母就开始进行搜索
   )
 
 (use-package
