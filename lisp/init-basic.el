@@ -63,7 +63,7 @@
 ;; 光标接近屏幕底部不再跳到屏幕中间
 (setq
   scroll-margin
-  3
+  7
   scroll-conservatively
   101
   scroll-up-aggressively
