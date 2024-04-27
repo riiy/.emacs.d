@@ -28,7 +28,7 @@
   vertico
   :ensure t
   :init (vertico-mode)
-  :config (setq vertico-preselect 'directory vertico-resize nil vertico-count 17 vertico-cycle t)
+  :config (setq vertico-resize nil vertico-count 17 vertico-cycle t)
   ;; Cleans up path when moving directories with shadowed paths syntax, e.g.
   ;; cleans ~/foo/bar/// to /, and ~/foo/bar/~/ to ~/.
   (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy)
@@ -38,6 +38,17 @@
   (define-key vertico-map (kbd "C-p") 'vertico-previous)
   (define-key vertico-map [backspace] #'vertico-directory-delete-char)
   (define-key vertico-map (kbd "s-SPC") #'+vertico/embark-preview))
+(use-package vertico-directory
+  :after vertico
+  :ensure nil
+  :demand
+  ;; More convenient directory navigation commands
+  :bind (:map vertico-map
+              ("RET"   . vertico-directory-enter)
+              ("DEL"   . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  ;; Tidy shadowed file names
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 ;; configuration for Consult
 (use-package
   consult
