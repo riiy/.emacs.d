@@ -28,7 +28,7 @@
   vertico
   :ensure t
   :init (vertico-mode)
-  :config (setq vertico-resize nil vertico-count 17 vertico-cycle t)
+  :config (setq vertico-preselect 'directory vertico-resize nil vertico-count 17 vertico-cycle t)
   ;; Cleans up path when moving directories with shadowed paths syntax, e.g.
   ;; cleans ~/foo/bar/// to /, and ~/foo/bar/~/ to ~/.
   (add-hook 'rfn-eshadow-update-overlay-hook #'vertico-directory-tidy)
