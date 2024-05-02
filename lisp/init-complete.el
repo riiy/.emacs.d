@@ -4,16 +4,6 @@
 ;; 自动补全
 
 ;;; Code:
-(use-package
-  company
-  :ensure t
-  :init (global-company-mode)
-  :config
-  (setq company-minimum-prefix-length 2) ; 只需敲 2 个字母就开始进行自动补全
-  (setq company-tooltip-align-annotations t) (setq company-idle-delay 0.0)
-  (setq company-show-quick-access t) ;; 给选项编号 (按快捷键 M-1、M-2 等等来进行选择).
-  (setq company-selection-wrap-around t)
-  (setq company-transformers '(company-sort-by-occurrence))) ; 根据选择的频率进行排序，读者如果不喜欢可以去掉
 
 (use-package
   yasnippet
@@ -249,6 +239,34 @@
     nil
     completion-category-overrides
     '((file (styles partial-completion)))))
+
+;; Enable Corfu completion UI
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode))
+
+;; Add extensions
+(use-package cape
+  :ensure t
+  :init
+  ;; Add to the global default value of `completion-at-point-functions' which is
+  ;; used by `completion-at-point'.  The order of the functions matters, the
+  ;; first function returning a result wins.  Note that the list of buffer-local
+  ;; completion functions takes precedence over the global list.
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+  (add-to-list 'completion-at-point-functions #'cape-history)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  ;;(add-to-list 'completion-at-point-functions #'cape-tex)
+  ;;(add-to-list 'completion-at-point-functions #'cape-sgml)
+  ;;(add-to-list 'completion-at-point-functions #'cape-rfc1345)
+  ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
+  ;;(add-to-list 'completion-at-point-functions #'cape-dict)
+  ;;(add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
+  (add-to-list 'completion-at-point-functions #'cape-line)
+)
 
 (provide 'init-complete)
 ;; Local Variables:

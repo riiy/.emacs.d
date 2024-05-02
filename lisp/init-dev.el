@@ -14,10 +14,6 @@
   eglot
   :ensure t
   :defer t
-  :init
-  (add-hook
-    'eglot-managed-mode-hook
-    (lambda () (add-to-list 'company-backends '(company-capf :with company-yasnippet))))
   :bind (:map eglot-mode-map ("C-c M-n" . eglot-rename))
   :hook
   ((python-ts-mode . eglot-ensure)
