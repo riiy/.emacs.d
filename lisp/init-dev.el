@@ -40,6 +40,21 @@
   (setq lsp-pyright-stub-path (concat (getenv "HOME") "/wokspc/python-type-stubs"))
   (setq-default eglot-workspace-configuration '((:pyright . ((useLibraryCodeForTypes . t))))))
 
+(use-package
+  gptel
+  :straight '(gptel :host github :repo "karthink/gptel")
+  :init
+  (gptel-make-ollama
+    "Ollama" ;Any name of your choosing
+    :host "localhost:11434" ;Where it's running
+    :stream t ;Stream responses
+    :models '("mistral:latest")) ;List of models
+  :config
+  (setq
+    gptel-model
+    "mistral:latest"
+    gptel-backend
+    (gptel-make-ollama "Ollama" :host "localhost:11434" :stream t :models '("mistral:latest"))))
 (provide 'init-dev)
 
 ;; Local Variables:
