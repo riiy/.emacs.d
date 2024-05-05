@@ -28,15 +28,18 @@
   (define-key vertico-map (kbd "C-p") 'vertico-previous)
   (define-key vertico-map [backspace] #'vertico-directory-delete-char)
   (define-key vertico-map (kbd "s-SPC") #'+vertico/embark-preview))
-(use-package vertico-directory
+(use-package
+  vertico-directory
   :after vertico
   :ensure nil
   :demand
   ;; More convenient directory navigation commands
-  :bind (:map vertico-map
-              ("RET"   . vertico-directory-enter)
-              ("DEL"   . vertico-directory-delete-char)
-              ("M-DEL" . vertico-directory-delete-word))
+  :bind
+  (:map
+    vertico-map
+    ("RET" . vertico-directory-enter)
+    ("DEL" . vertico-directory-delete-char)
+    ("M-DEL" . vertico-directory-delete-word))
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 ;; configuration for Consult
@@ -241,13 +244,11 @@
     '((file (styles partial-completion)))))
 
 ;; Enable Corfu completion UI
-(use-package corfu
-  :ensure t
-  :init
-  (global-corfu-mode))
+(use-package corfu :ensure t :init (global-corfu-mode))
 
 ;; Add extensions
-(use-package cape
+(use-package
+  cape
   :ensure t
   :init
   ;; Add to the global default value of `completion-at-point-functions' which is
@@ -265,8 +266,7 @@
   ;;(add-to-list 'completion-at-point-functions #'cape-abbrev)
   ;;(add-to-list 'completion-at-point-functions #'cape-dict)
   ;;(add-to-list 'completion-at-point-functions #'cape-elisp-symbol)
-  (add-to-list 'completion-at-point-functions #'cape-line)
-)
+  (add-to-list 'completion-at-point-functions #'cape-line))
 
 (provide 'init-complete)
 ;; Local Variables:
