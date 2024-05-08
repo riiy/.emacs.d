@@ -46,7 +46,7 @@
     (setq-local
       completion-at-point-functions
       (list
-        (cape-capf-super #'tempel-complete #'eglot-completion-at-point)
+        (cape-capf-super #'eglot-completion-at-point)
         #'cape-keyword
         #'cape-dabbrev
         #'cape-file)))
