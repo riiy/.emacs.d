@@ -32,6 +32,8 @@
 (setq visible-cursor nil)
 ;; 保存上次打开位置
 (save-place-mode 1)
+;; 不换行
+(setq-default truncate-lines t)
 ;; (setq enable-local-variables nil) ; 允许局部变量
 ;; 国内镜像
 (require 'package)

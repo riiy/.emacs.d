@@ -243,6 +243,11 @@
     completion-category-overrides
     '((file (styles partial-completion)))))
 
+(use-package
+  corfu-terminal
+  :ensure t
+  :if (not (display-graphic-p))
+  :config (corfu-terminal-mode +1))
 ;; Enable Corfu completion UI
 (use-package corfu :ensure t :init (global-corfu-mode))
 

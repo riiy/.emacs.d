@@ -3,12 +3,17 @@
 
 ;;; Code:
 ;; python
-(setq-default truncate-lines t)
-(add-hook 'python-mode-hook (lambda () (setq truncate-lines t)))
-(setq tab-width 4)
-(set-variable 'python-indent-offset 4)
-(set-variable 'python-indent-guess-indent-offset nil)
-(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+
+(use-package
+  python
+  :custom (python-indent-guess-indent-offset-verbose . nil)
+  :hook (python-ts-mode-hook . eglot-ensure)
+  :init
+  (add-hook 'python-mode-hook (lambda () (setq truncate-lines t)))
+  (setq tab-width 4)
+  (set-variable 'python-indent-offset 4)
+  (set-variable 'python-indent-guess-indent-offset nil)
+  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 ;; eglot
 (use-package
   eglot
@@ -36,9 +41,16 @@
   :config
   ;; Python specific
   (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
-  (setq lsp-pyright-use-library-code-for-types t)
-  (setq lsp-pyright-stub-path (concat (getenv "HOME") "/wokspc/python-type-stubs"))
-  (setq-default eglot-workspace-configuration '((:pyright . ((useLibraryCodeForTypes . t))))))
+  (defun
+    my/eglot-capf ()
+    (setq-local
+      completion-at-point-functions
+      (list
+        (cape-capf-super #'tempel-complete #'eglot-completion-at-point)
+        #'cape-keyword
+        #'cape-dabbrev
+        #'cape-file)))
+  (add-hook 'eglot-managed-mode-hook #'my/eglot-capf))
 
 (use-package
   gptel
@@ -55,6 +67,26 @@
     "mistral:latest"
     gptel-backend
     (gptel-make-ollama "Ollama" :host "localhost:11434" :stream t :models '("mistral:latest"))))
+
+(use-package
+  flymake
+  :ensure t
+  :bind
+  (nil
+    :map
+    flymake-mode-map
+    ("C-c C-p" . flymake-goto-prev-error)
+    ("C-c C-n" . flymake-goto-next-error))
+  )
+
+(use-package
+  flymake-diagnostic-at-point
+  :ensure t
+  :after flymake
+  :config
+  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
+  (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
+
 (provide 'init-dev)
 
 ;; Local Variables:
