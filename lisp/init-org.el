@@ -283,7 +283,29 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   :config
   (define-key beancount-mode-map (kbd "C-c C-n") #'outline-next-visible-heading)
   (define-key beancount-mode-map (kbd "C-c C-p") #'outline-previous-visible-heading))
+
 ;; org-roam
+(use-package
+  org-roam-protocol
+  :init
+  (setq
+    org-roam-capture-ref-templates
+    '
+    (
+      ("a" "Annotation" plain "%U ${body}\n"
+        :target
+        (file+head
+          "${slug}.org"
+          "#+title: ${title}\n#+roam_key: ${ref}\n#+roam_alias:\n#+roam_tags:\n\n")
+        :immediate-finish t
+        :unnarrowed t)
+      ("r" "ref" plain ""
+        :target
+        (file+head
+          "${slug}.org"
+          "#+title: ${title}\n#+roam_key: ${ref}\n#+roam_alias:\n#+roam_tags:\n\n")
+        :immediate-finish t
+        :unnarrowed t))))
 (use-package
   org-roam
   :ensure t
@@ -322,28 +344,25 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
     org-roam-capture-templates
     '
     (
-      ("d" "default" plain "%?"
-        :target
-        (file+head
-          "%<%Y%m%d%H%M%S>-${slug}.org"
-          "#+title: ${title}\n#+roam_alias:\n#+roam_key:\n#+roam_tags:\n\n")
-        :unnarrowed t)))
-  (setq
-    org-roam-capture-ref-templates
-    '
-    (
-      ("a" "Annotation" plain "%U ${body}\n"
-        :target
-        (file+head
-          "${slug}.org"
-          "#+title: ${title}\n#+roam_key: ${ref}\n#+roam_alias:\n#+roam_tags:\n\n")
+      ("m"
+        "main"
+        plain
+        "%?"
+        :if-new (file+head "main/${slug}.org" "#+title: ${title}\n")
         :immediate-finish t
         :unnarrowed t)
-      ("r" "ref" plain ""
-        :target
-        (file+head
-          "${slug}.org"
-          "#+title: ${title}\n#+roam_key: ${ref}\n#+roam_alias:\n#+roam_tags:\n\n")
+      ("r"
+        "reference"
+        plain
+        "%?"
+        :if-new (file+head "reference/${title}.org" "#+title: ${title}\n")
+        :immediate-finish t
+        :unnarrowed t)
+      ("a"
+        "article"
+        plain
+        "%?"
+        :if-new (file+head "articles/${title}.org" "#+title: ${title}\n#+filetags: :article:\n")
         :immediate-finish t
         :unnarrowed t))))
 (provide 'init-org)
