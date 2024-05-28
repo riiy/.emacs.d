@@ -244,7 +244,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
 
   (add-hook 'org-after-refile-insert-hook #'save-buffer)
 
-  :bind (("C-c a" . 'org-agenda) ("C-x c" . 'org-capture)))
+  :bind (("C-x a a" . 'org-agenda) ("C-x c" . 'org-capture)))
 
 (use-package
   evil-org
