@@ -15,7 +15,7 @@
 (setq make-backup-files nil) ; 关闭文件自动备份
 (add-hook 'prog-mode-hook #'hs-minor-mode) ; 编程模式下，可以折叠代码块
 (global-display-line-numbers-mode 1) ; 在 Window 显示行号
-(tool-bar-mode -1) ; （熟练后可选）关闭 Tool bar
+(when (display-graphic-p) (tool-bar-mode -1)); 关闭 Tool bar
 (when
   (display-graphic-p)
   (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized))))))
