@@ -49,6 +49,7 @@
       (list
         (cape-capf-super #'eglot-completion-at-point)
         #'cape-keyword
+        #'cape-history
         #'cape-dabbrev
         #'cape-file)))
   (add-hook 'eglot-managed-mode-hook #'my/eglot-capf))
