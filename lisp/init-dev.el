@@ -13,7 +13,9 @@
   (setq tab-width 4)
   (set-variable 'python-indent-offset 4)
   (set-variable 'python-indent-guess-indent-offset nil)
-  (set-variable 'python-check-command "pycodestyle --max-line-length=240 --ignore=E121,E122,E123,E126,E226,E24,E704,E721,W503,W504")
+  (set-variable
+    'python-check-command
+    "pycodestyle --max-line-length=240 --ignore=E121,E122,E123,E126,E226,E24,E704,E721,W503,W504")
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 ;; eglot
 (use-package
@@ -54,22 +56,23 @@
         #'cape-file)))
   (add-hook 'eglot-managed-mode-hook #'my/eglot-capf))
 
-(use-package
-  gptel
-  :straight '(gptel :host github :repo "karthink/gptel")
-  :init
-  (gptel-make-ollama
-    "Ollama" ;Any name of your choosing
-    :host "localhost:11434" ;Where it's running
-    :stream t ;Stream responses
-    :models '("mistral:latest")) ;List of models
-  :config
-  (setq
-    gptel-model
-    "mistral:latest"
-    gptel-backend
-    (gptel-make-ollama "Ollama" :host "localhost:11434" :stream t :models '("mistral:latest"))))
-
+(when
+  (display-graphic-p)
+  (use-package
+    gptel
+    :straight '(gptel :host github :repo "karthink/gptel")
+    :init
+    (gptel-make-ollama
+      "Ollama" ;Any name of your choosing
+      :host "localhost:11434" ;Where it's running
+      :stream t ;Stream responses
+      :models '("mistral:latest")) ;List of models
+    :config
+    (setq
+      gptel-model
+      "mistral:latest"
+      gptel-backend
+      (gptel-make-ollama "Ollama" :host "localhost:11434" :stream t :models '("mistral:latest")))))
 (use-package
   flymake
   :ensure t
@@ -78,8 +81,7 @@
     :map
     flymake-mode-map
     ("C-c C-p" . flymake-goto-prev-error)
-    ("C-c C-n" . flymake-goto-next-error))
-  )
+    ("C-c C-n" . flymake-goto-next-error)))
 
 (use-package
   flymake-diagnostic-at-point
