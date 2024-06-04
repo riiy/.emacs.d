@@ -17,6 +17,16 @@
     'python-check-command
     "pycodestyle --max-line-length=240 --ignore=E121,E122,E123,E126,E226,E24,E704,E721,W503,W504")
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
+
+;; golang
+(use-package
+  go-mode
+  :ensure t
+  :commands go-mode
+  :config
+  (setq gofmt-command "goimports")
+  (add-hook ' before-save-hook ' gofmt-before-save))
+
 ;; eglot
 (use-package
   eglot
@@ -25,6 +35,7 @@
   :bind (:map eglot-mode-map ("C-c M-n" . eglot-rename))
   :hook
   ((python-ts-mode . eglot-ensure)
+    (go-mode . eglot-ensure)
     (python-ts-mode . hs-minor-mode)
     (python-ts-mode . (lambda () (set-fill-column 240))))
   :custom
@@ -54,7 +65,9 @@
         #'cape-history
         #'cape-dabbrev
         #'cape-file)))
-  (add-hook 'eglot-managed-mode-hook #'my/eglot-capf))
+  (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
+  (add-to-list ' eglot-server-programs '(go-mode . ("gopls")))
+  (add-hook ' go-mode-hook #'eglot-ensure))
 
 (when
   (display-graphic-p)
