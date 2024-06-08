@@ -19,14 +19,15 @@
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 
 ;; golang
-(use-package
-  go-mode
-  :ensure t
-  :commands go-mode
-  :config
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook #'gofmt-before-save))
-
+(when
+  (display-graphic-p)
+  (use-package
+    go-mode
+    :ensure t
+    :commands go-mode
+    :config
+    (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook #'gofmt-before-save)))
 ;; eglot
 (use-package
   eglot
@@ -55,19 +56,21 @@
   :config
   ;; Python specific
   (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
-  (defun
-    my/eglot-capf ()
-    (setq-local
-      completion-at-point-functions
-      (list
-        (cape-capf-super #'eglot-completion-at-point)
-        #'cape-keyword
-        #'cape-history
-        #'cape-dabbrev
-        #'cape-file)))
-  (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
-  (add-to-list ' eglot-server-programs '(go-mode . ("gopls")))
-  (add-hook ' go-mode-hook #'eglot-ensure))
+  (when
+    (display-graphic-p)
+    (defun
+      my/eglot-capf ()
+      (setq-local
+        completion-at-point-functions
+        (list
+          (cape-capf-super #'eglot-completion-at-point)
+          #'cape-keyword
+          #'cape-history
+          #'cape-dabbrev
+          #'cape-file)))
+    (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
+    (add-to-list ' eglot-server-programs '(go-mode . ("gopls")))
+    (add-hook ' go-mode-hook #'eglot-ensure)))
 
 (when
   (display-graphic-p)
