@@ -25,7 +25,7 @@
   :commands go-mode
   :config
   (setq gofmt-command "goimports")
-  (add-hook ' before-save-hook ' gofmt-before-save))
+  (add-hook 'before-save-hook #'gofmt-before-save))
 
 ;; eglot
 (use-package
