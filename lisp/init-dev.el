@@ -19,15 +19,13 @@
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 
 ;; golang
-(when
-  (display-graphic-p)
-  (use-package
-    go-mode
-    :ensure t
-    :commands go-mode
-    :config
-    (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook #'gofmt-before-save)))
+(use-package
+  go-mode
+  :ensure t
+  :commands go-mode
+  :config
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook #'gofmt-before-save))
 ;; eglot
 (use-package
   eglot
@@ -36,9 +34,11 @@
   :bind (:map eglot-mode-map ("C-c M-n" . eglot-rename))
   :hook
   ((python-ts-mode . eglot-ensure)
-    (go-mode . eglot-ensure)
     (python-ts-mode . hs-minor-mode)
-    (python-ts-mode . (lambda () (set-fill-column 240))))
+    (python-ts-mode . (lambda () (set-fill-column 240)))
+    (go-mode . eglot-ensure)
+    (c-mode . eglot-ensure)
+    (c++-mode . eglot-ensure))
   :custom
   (eglot-autoshutdown t)
   (eglot-events-buffer-size 0)
@@ -56,6 +56,8 @@
   :config
   ;; Python specific
   (add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
+  ;; Golang specific
+  (add-to-list ' eglot-server-programs '(go-mode . ("gopls")))
   (when
     (display-graphic-p)
     (defun
@@ -68,9 +70,7 @@
           #'cape-history
           #'cape-dabbrev
           #'cape-file)))
-    (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
-    (add-to-list ' eglot-server-programs '(go-mode . ("gopls")))
-    (add-hook ' go-mode-hook #'eglot-ensure)))
+    (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)))
 
 (when
   (display-graphic-p)
