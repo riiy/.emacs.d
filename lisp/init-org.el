@@ -31,7 +31,7 @@
     ;; buffers in the background. They'll be "restarted" if the user switches to
     ;; them anyway (see `+org-exclude-agenda-buffers-from-workspace-h')
     org-agenda-inhibit-startup t)
-  (setq org-log-done 'time)
+  (setq org-log-done 'note)
   (setq org-closed-keep-when-no-todo t)
   (setq
     org-indirect-buffer-display
