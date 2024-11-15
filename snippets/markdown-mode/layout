@@ -5,7 +5,7 @@
 
 ---
 layout: ${0:post}
-title:  "${1:`(buffer-name)`}"
+title:  "${1:`(replace-regexp-in-string ".md" "" (buffer-name))`}"
 date:   `(format-time-string "%Y-%m-%d %H:%M:%S +0800")`
 categories: ${2:economy}
 ---
