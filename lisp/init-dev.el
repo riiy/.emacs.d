@@ -106,7 +106,43 @@
   :config
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
+;; web
+(use-package web-mode
+  :ensure t
+  :defer t
+  :mode (("\\.ios\\.js$" . web-mode)
+         ("\\.android\\.js$" . web-mode)
+         ("\\.react\\.js$" . web-mode)
+         ("\\.js$" . web-mode))
+  :config
+  (add-to-list 'magic-mode-alist '("^import React" . web-mode))
+  (add-to-list 'magic-mode-alist '("React.Component" . web-mode))
+  (add-to-list 'magic-mode-alist '("from 'react';$" . web-mode))
+  (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
 
+  (with-eval-after-load 'flymake
+    (flymake-add-mode 'javascript-eslint 'web-mode))
+
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (if (equal web-mode-content-type "javascript")
+                  (web-mode-set-content-type "jsx"))))
+  (setq-local web-mode-enable-auto-quoting nil)
+
+  (setq-default js-indent-level 4)
+
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (setq web-mode-markup-indent-offset (symbol-value 'js-indent-level))
+              (setq web-mode-attr-indent-offset (symbol-value 'js-indent-level))
+              (setq web-mode-css-indent-offset (symbol-value 'js-indent-level))
+              (setq web-mode-code-indent-offset (symbol-value 'js-indent-level)))))
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flymake)
+  :hook ((typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
 (provide 'init-dev)
 
 ;; Local Variables:
