@@ -2,8 +2,28 @@
 ;;; Commentary:
 
 ;;; Code:
-;; python
+;; tree siter
 
+(setq
+  treesit-language-source-alist
+  '
+  ((bash "https://github.com/tree-sitter/tree-sitter-bash")
+    (cmake "https://github.com/uyha/tree-sitter-cmake")
+    (css "https://github.com/tree-sitter/tree-sitter-css")
+    (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+    (go "https://github.com/tree-sitter/tree-sitter-go")
+    (html "https://github.com/tree-sitter/tree-sitter-html")
+    (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+    (json "https://github.com/tree-sitter/tree-sitter-json")
+    (make "https://github.com/alemuller/tree-sitter-make")
+    (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+    (python "https://github.com/tree-sitter/tree-sitter-python")
+    (toml "https://github.com/tree-sitter/tree-sitter-toml")
+    (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+    (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+    (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+
+;; python
 (use-package
   python
   :custom (python-indent-guess-indent-offset-verbose . nil)
@@ -107,42 +127,60 @@
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
 ;; web
-(use-package web-mode
+(use-package
+  web-mode
   :ensure t
   :defer t
-  :mode (("\\.ios\\.js$" . web-mode)
-         ("\\.android\\.js$" . web-mode)
-         ("\\.react\\.js$" . web-mode)
-         ("\\.js$" . web-mode))
+  :mode
+  (("\\.ios\\.js$" . web-mode)
+    ("\\.android\\.js$" . web-mode)
+    ("\\.react\\.js$" . web-mode)
+    ("\\.js$" . web-mode))
   :config
   (add-to-list 'magic-mode-alist '("^import React" . web-mode))
   (add-to-list 'magic-mode-alist '("React.Component" . web-mode))
   (add-to-list 'magic-mode-alist '("from 'react';$" . web-mode))
   (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
 
-  (with-eval-after-load 'flymake
-    (flymake-add-mode 'javascript-eslint 'web-mode))
+  (with-eval-after-load 'flymake (flymake-add-mode 'javascript-eslint 'web-mode))
 
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (if (equal web-mode-content-type "javascript")
-                  (web-mode-set-content-type "jsx"))))
+  (add-hook
+    'web-mode-hook
+    (lambda () (if (equal web-mode-content-type "javascript") (web-mode-set-content-type "jsx"))))
   (setq-local web-mode-enable-auto-quoting nil)
 
   (setq-default js-indent-level 4)
 
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (setq web-mode-markup-indent-offset (symbol-value 'js-indent-level))
-              (setq web-mode-attr-indent-offset (symbol-value 'js-indent-level))
-              (setq web-mode-css-indent-offset (symbol-value 'js-indent-level))
-              (setq web-mode-code-indent-offset (symbol-value 'js-indent-level)))))
-(use-package tide
+  (add-hook
+    'web-mode-hook
+    (lambda
+      ()
+      (setq web-mode-markup-indent-offset (symbol-value 'js-indent-level))
+      (setq web-mode-attr-indent-offset (symbol-value 'js-indent-level))
+      (setq web-mode-css-indent-offset (symbol-value 'js-indent-level))
+      (setq web-mode-code-indent-offset (symbol-value 'js-indent-level)))))
+(defun
+  setup-tide-mode
+  ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1))
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+;; if you use treesitter based typescript-ts-mode (emacs 29+)
+(add-hook 'typescript-ts-mode-hook #'setup-tide-mode)
+(add-hook 'tsx-ts-mode-hook #'setup-tide-mode)
+(use-package
+  tide
   :ensure t
-  :after (typescript-mode company flymake)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
+  :mode ((".ts$" . typescript-ts-mode))
+  :hook
+  ((typescript-ts-mode . tide-setup)
+    (tsx-ts-mode . tide-setup)
+    (typescript-ts-mode . tide-hl-identifier-mode)
+    (before-save . tide-format-before-save)))
 (provide 'init-dev)
 
 ;; Local Variables:
