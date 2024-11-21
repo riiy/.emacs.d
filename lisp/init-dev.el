@@ -164,8 +164,8 @@
   ()
   (interactive)
   (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (flymake-mode +1)
+  (setq flymake-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1))
 ;; formats the buffer before saving
 (add-hook 'before-save-hook 'tide-format-before-save)
@@ -175,7 +175,7 @@
 (use-package
   tide
   :ensure t
-  :mode ((".ts$" . typescript-ts-mode))
+  :mode ((".tsx$" . tsx-ts-mode)(".ts$" . typescript-ts-mode))
   :hook
   ((typescript-ts-mode . tide-setup)
     (tsx-ts-mode . tide-setup)
