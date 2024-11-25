@@ -92,23 +92,6 @@
           #'cape-file)))
     (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)))
 
-(when
-  (display-graphic-p)
-  (use-package
-    gptel
-    :straight '(gptel :host github :repo "karthink/gptel")
-    :init
-    (gptel-make-ollama
-      "Ollama" ;Any name of your choosing
-      :host "localhost:11434" ;Where it's running
-      :stream t ;Stream responses
-      :models '("mistral:latest")) ;List of models
-    :config
-    (setq
-      gptel-model
-      "mistral:latest"
-      gptel-backend
-      (gptel-make-ollama "Ollama" :host "localhost:11434" :stream t :models '("mistral:latest")))))
 (use-package
   flymake
   :ensure t
