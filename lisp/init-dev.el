@@ -164,6 +164,8 @@
     (tsx-ts-mode . tide-setup)
     (typescript-ts-mode . tide-hl-identifier-mode)
     (before-save . tide-format-before-save)))
+(use-package vterm
+    :ensure t)
 (provide 'init-dev)
 
 ;; Local Variables:
