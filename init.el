@@ -35,7 +35,8 @@
 (require 'init-evil)
 (require 'init-dev)
 (require 'init-org)
-;; (require 'evil-fcitx5)
+(require 'evil-fcitx5)
+
 
 ;; 导出
 (provide 'init)
