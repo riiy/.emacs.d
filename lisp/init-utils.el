@@ -24,7 +24,22 @@
   :config (setq highlight-symbol-idle-delay 1.0 highlight-symbol-on-navigation-p t)
   :diminish highlight-symbol-mode)
 ;; which-key
-(use-package which-key :ensure t :init (which-key-mode))
+(use-package which-key :ensure t :init
+  (which-key-mode)
+  (which-key-add-key-based-replacements "C-c &" "yasniper")
+  (which-key-add-key-based-replacements "C-c @" "hs-code-block")
+  (which-key-add-key-based-replacements "C-c n" "org-roam")
+  (which-key-add-key-based-replacements "C-x a" "abbrev")
+  (which-key-add-key-based-replacements "C-x 8" "emoji")
+  (which-key-add-key-based-replacements "C-x n" "narrow")
+  (which-key-add-key-based-replacements "C-x p" "project")
+  (which-key-add-key-based-replacements "C-x r" "register")
+  (which-key-add-key-based-replacements "C-x t" "TAB")
+  (which-key-add-key-based-replacements "C-x w" "window")
+  (which-key-add-key-based-replacements "C-x RET" "SETING")
+  (which-key-add-major-mode-key-based-replacements 'python-ts-mode "C-c C-t" "skeleton")
+  (which-key-add-major-mode-key-based-replacements 'python-ts-mode "C-c TAB" "imports")
+  )
 ;; 输入法pyim-wbdict
 ;; (use-package popup :ensure t)
 ;; (use-package
