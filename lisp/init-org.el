@@ -3,7 +3,6 @@
 ;;; Code:
 
 
-
 (defvar org-capture-initial)
 
 (defun

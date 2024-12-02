@@ -158,14 +158,13 @@
 (use-package
   tide
   :ensure t
-  :mode ((".tsx$" . tsx-ts-mode)(".ts$" . typescript-ts-mode))
+  :mode ((".tsx$" . tsx-ts-mode) (".ts$" . typescript-ts-mode))
   :hook
   ((typescript-ts-mode . tide-setup)
     (tsx-ts-mode . tide-setup)
     (typescript-ts-mode . tide-hl-identifier-mode)
     (before-save . tide-format-before-save)))
-(use-package vterm
-    :ensure t)
+(use-package vterm :ensure t)
 (provide 'init-dev)
 
 ;; Local Variables:
