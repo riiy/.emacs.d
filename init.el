@@ -36,7 +36,7 @@
 (require 'init-dev)
 (require 'init-org)
 (require 'evil-fcitx5)
-
+(require 'cmake-mode)
 
 ;; 导出
 (provide 'init)
