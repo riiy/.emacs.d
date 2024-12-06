@@ -92,23 +92,10 @@
           #'cape-file)))
     (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)))
 
-(use-package
-  flymake
+(use-package flycheck
   :ensure t
-  :bind
-  (nil
-    :map
-    flymake-mode-map
-    ("C-c C-p" . flymake-goto-prev-error)
-    ("C-c C-n" . flymake-goto-next-error)))
-
-(use-package
-  flymake-diagnostic-at-point
-  :ensure t
-  :after flymake
   :config
-  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
-  (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 ;; web
 (use-package
   web-mode
@@ -125,7 +112,7 @@
   (add-to-list 'magic-mode-alist '("from 'react';$" . web-mode))
   (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
 
-  (with-eval-after-load 'flymake (flymake-add-mode 'javascript-eslint 'web-mode))
+  (with-eval-after-load 'flycheck (flycheck-add-mode 'javascript-eslint 'web-mode))
 
   (add-hook
     'web-mode-hook
@@ -147,8 +134,8 @@
   ()
   (interactive)
   (tide-setup)
-  (flymake-mode +1)
-  (setq flymake-check-syntax-automatically '(save mode-enabled))
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1))
 ;; formats the buffer before saving
 (add-hook 'before-save-hook 'tide-format-before-save)
