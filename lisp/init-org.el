@@ -465,7 +465,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
   :straight '(beancount :host github :repo "beancount/beancount-mode")
   :init
   (add-hook 'beancount-mode-hook (lambda () (setq-local electric-indent-chars nil)))
-  (add-hook 'beancount-mode-hook #'flycheck-bean-check-enable)
+  (add-hook 'beancount-mode-hook #'flymake-bean-check-enable)
   :mode (("\\.beancount\\'" . beancount-mode))
   :config
   (define-key beancount-mode-map (kbd "C-c C-n") #'outline-next-visible-heading)

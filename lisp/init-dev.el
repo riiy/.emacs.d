@@ -92,65 +92,6 @@
           #'cape-file)))
     (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)))
 
-(use-package flycheck
-  :ensure t
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
-;; web
-(use-package
-  web-mode
-  :ensure t
-  :defer t
-  :mode
-  (("\\.ios\\.js$" . web-mode)
-    ("\\.android\\.js$" . web-mode)
-    ("\\.react\\.js$" . web-mode)
-    ("\\.js$" . web-mode))
-  :config
-  (add-to-list 'magic-mode-alist '("^import React" . web-mode))
-  (add-to-list 'magic-mode-alist '("React.Component" . web-mode))
-  (add-to-list 'magic-mode-alist '("from 'react';$" . web-mode))
-  (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil))
-
-  (with-eval-after-load 'flycheck (flycheck-add-mode 'javascript-eslint 'web-mode))
-
-  (add-hook
-    'web-mode-hook
-    (lambda () (if (equal web-mode-content-type "javascript") (web-mode-set-content-type "jsx"))))
-  (setq-local web-mode-enable-auto-quoting nil)
-
-  (setq-default js-indent-level 4)
-
-  (add-hook
-    'web-mode-hook
-    (lambda
-      ()
-      (setq web-mode-markup-indent-offset (symbol-value 'js-indent-level))
-      (setq web-mode-attr-indent-offset (symbol-value 'js-indent-level))
-      (setq web-mode-css-indent-offset (symbol-value 'js-indent-level))
-      (setq web-mode-code-indent-offset (symbol-value 'js-indent-level)))))
-(defun
-  setup-tide-mode
-  ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1))
-;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
-;; if you use treesitter based typescript-ts-mode (emacs 29+)
-(add-hook 'typescript-ts-mode-hook #'setup-tide-mode)
-(add-hook 'tsx-ts-mode-hook #'setup-tide-mode)
-(use-package
-  tide
-  :ensure t
-  :mode ((".tsx$" . tsx-ts-mode) (".ts$" . typescript-ts-mode))
-  :hook
-  ((typescript-ts-mode . tide-setup)
-    (tsx-ts-mode . tide-setup)
-    (typescript-ts-mode . tide-hl-identifier-mode)
-    (before-save . tide-format-before-save)))
 (use-package vterm :ensure t)
 (provide 'init-dev)
 
