@@ -87,15 +87,15 @@
   (setq doom-modeline-lsp-icon t)
 
   ;; Whether display the time icon. It respects option `doom-modeline-icon'.
-  (setq doom-modeline-time-icon t)
+  (setq doom-modeline-time-icon nil)
 
   ;; Whether display the live icons of time.
   ;; It respects option `doom-modeline-icon' and option `doom-modeline-time-icon'.
-  (setq doom-modeline-time-live-icon t)
+  (setq doom-modeline-time-live-icon nil)
 
   ;; Whether to use an analogue clock svg as the live time icon.
   ;; It respects options `doom-modeline-icon', `doom-modeline-time-icon', and `doom-modeline-time-live-icon'.
-  (setq doom-modeline-time-analogue-clock t)
+  (setq doom-modeline-time-analogue-clock nil)
 
   ;; The scaling factor used when drawing the analogue clock.
   (setq doom-modeline-time-clock-size 0.7)
@@ -223,6 +223,7 @@
   (setq doom-modeline-battery t)
 
   ;; Whether display the time. It respects `display-time-mode'.
+  (setq display-time-format "%I:%M")
   (setq doom-modeline-time t)
 
   ;; Whether display the misc segment on all mode lines.
@@ -262,7 +263,9 @@
 
   ;; Hooks that run before/after the modeline version string is updated
   (setq doom-modeline-before-update-env-hook nil)
-  (setq doom-modeline-after-update-env-hook nil))
+  (setq doom-modeline-after-update-env-hook nil)
+  (setq display-time-default-load-average nil)
+  (display-time))
 
 (provide 'init-ui)
 ;; Local Variables:
