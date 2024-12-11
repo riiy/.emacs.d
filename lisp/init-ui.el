@@ -265,6 +265,7 @@
   (setq doom-modeline-before-update-env-hook nil)
   (setq doom-modeline-after-update-env-hook nil)
   (setq display-time-default-load-average nil)
+  (setq display-time-format "%H:%M")
   (display-time))
 
 (provide 'init-ui)
