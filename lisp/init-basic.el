@@ -76,6 +76,9 @@
   t
   auto-window-vscroll
   nil)
+;; Make Emacs use the $PATH set up by the user's shell. https://github.com/purcell/exec-path-from-shell
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 ;;; packages
 (provide 'init-basic)
 ;; Local Variables:
