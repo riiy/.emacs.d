@@ -37,7 +37,6 @@
     'python-check-command
     "pycodestyle --max-line-length=240 --ignore=E121,E122,E123,E126,E226,E24,E704,E721,W503,W504")
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
-(use-package poetry :ensure t)
 ;; golang
 (use-package
   go-mode
