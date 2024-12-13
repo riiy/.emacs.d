@@ -91,6 +91,22 @@
           #'cape-file)))
     (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)))
 
+(use-package flymake
+  :ensure t
+  :bind (nil
+         :map flymake-mode-map
+         ("C-c C-p" . flymake-goto-prev-error)
+         ("C-c C-n" . flymake-goto-next-error))
+  :config
+  (set-face-background 'flymake-errline "red4")
+  (set-face-background 'flymake-warnline "DarkOrange"))
+
+(use-package flymake-diagnostic-at-point
+  :ensure t
+  :after flymake
+  :config
+  (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
+  (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
 (use-package vterm :ensure t)
 (provide 'init-dev)
 
