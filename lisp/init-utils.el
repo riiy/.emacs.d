@@ -38,6 +38,7 @@
   (which-key-add-key-based-replacements "C-x r" "register")
   (which-key-add-key-based-replacements "C-x t" "TAB")
   (which-key-add-key-based-replacements "C-x w" "window")
+  (which-key-add-key-based-replacements "C-x x" "buffer+utils")
   (which-key-add-key-based-replacements "C-x RET" "SETING")
   (which-key-add-major-mode-key-based-replacements 'python-ts-mode "C-c C-t" "skeleton")
   (which-key-add-major-mode-key-based-replacements 'python-ts-mode "C-c TAB" "imports")
@@ -45,7 +46,10 @@
   (which-key-add-major-mode-key-based-replacements 'markdown-mode "C-c C-s" "inserts")
   (which-key-add-major-mode-key-based-replacements 'markdown-mode "C-c C-a" "insert-head")
   (which-key-add-major-mode-key-based-replacements 'markdown-mode "C-c C-x" "toggle")
-  (which-key-add-major-mode-key-based-replacements 'markdown-mode "C-c C-c" "export"))
+  (which-key-add-major-mode-key-based-replacements 'markdown-mode "C-c C-c" "export")
+  (which-key-add-major-mode-key-based-replacements 'org-mode "C-c \"" "plot")
+  (which-key-add-major-mode-key-based-replacements 'org-mode "C-c C-v" "babel")
+  (which-key-add-major-mode-key-based-replacements 'org-mode "C-c C-x" "utils"))
 ;; unto-tree
 (use-package
   undo-tree
