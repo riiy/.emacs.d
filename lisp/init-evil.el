@@ -11,7 +11,12 @@
   :init
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
-  :config (evil-mode 1) (evil-define-key 'normal 'global (kbd "gs") 'evil-avy-goto-char-2))
+  :config (evil-mode 1) (evil-define-key 'normal 'global (kbd "gs") 'evil-avy-goto-char-2)
+  (with-eval-after-load
+    'evil-maps
+    (define-key evil-motion-state-map (kbd "SPC") nil)
+    (define-key evil-motion-state-map (kbd "RET") nil)
+    (define-key evil-motion-state-map (kbd "TAB") nil)))
 
 (use-package
   evil-collection

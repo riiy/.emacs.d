@@ -220,6 +220,8 @@ project."
     org-agenda-inhibit-startup t)
   (setq org-log-done 'note)
   (setq org-closed-keep-when-no-todo t)
+  ;; When org-return-follows-link is set, RET also follows the link at point.
+  (setq org-return-follows-link t)
   (setq
     org-indirect-buffer-display
     'current-window
