@@ -7,7 +7,7 @@
 ;; amx 记录我们每次调用 M-x 时输入的命令历史，然后每次将最常用的显示在前面
 (use-package amx :ensure t :init (amx-mode))
 ;; avy 快速光标跳转
-(use-package avy :ensure t :bind (("C-;" . avy-goto-char-timer)))
+(use-package avy :ensure t)
 ;; marginalia 为 Emacs minibuffer 中的选项添加注解
 (use-package
   marginalia
@@ -47,16 +47,6 @@
   (which-key-add-major-mode-key-based-replacements 'markdown-mode "C-c C-a" "insert-head")
   (which-key-add-major-mode-key-based-replacements 'markdown-mode "C-c C-x" "toggle")
   (which-key-add-major-mode-key-based-replacements 'markdown-mode "C-c C-c" "export"))
-;; 输入法pyim-wbdict
-;; (use-package popup :ensure t)
-;; (use-package
-;;   pyim-wbdict
-;;   :ensure t
-;;   :init
-;;   (require 'popup)
-;;   (setq pyim-default-scheme 'wubi)
-;;   (setq default-input-method "pyim")
-;;   :config (pyim-wbdict-v86-enable))
 ;; unto-tree
 (use-package
   undo-tree

@@ -43,7 +43,7 @@
   (("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
     ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
     ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-(when (not package-archive-contents) (package-refresh-contents)) ;; 每次打开都拉取最新package
+;; (when (not package-archive-contents) (package-refresh-contents)) ;; 每次打开都拉取最新package
 (package-initialize)
 (defvar bootstrap-version)
 (let
@@ -79,7 +79,6 @@
 ;; Make Emacs use the $PATH set up by the user's shell. https://github.com/purcell/exec-path-from-shell
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
-;;; packages
 (provide 'init-basic)
 ;; Local Variables:
 ;; coding: utf-8
