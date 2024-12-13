@@ -93,10 +93,6 @@
 
 (use-package flymake
   :ensure t
-  :bind (nil
-         :map flymake-mode-map
-         ("C-c C-p" . flymake-goto-prev-error)
-         ("C-c C-n" . flymake-goto-next-error))
   :config
   (set-face-background 'flymake-errline "red4")
   (set-face-background 'flymake-warnline "DarkOrange"))
