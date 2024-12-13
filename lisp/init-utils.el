@@ -35,7 +35,6 @@
   (which-key-add-key-based-replacements "C-x a" "abbrev")
   (which-key-add-key-based-replacements "C-x 8" "emoji")
   (which-key-add-key-based-replacements "C-x n" "narrow")
-  (which-key-add-key-based-replacements "C-x p" "project")
   (which-key-add-key-based-replacements "C-x r" "register")
   (which-key-add-key-based-replacements "C-x t" "TAB")
   (which-key-add-key-based-replacements "C-x w" "window")
@@ -69,7 +68,7 @@
   projectile
   :ensure t
   :init (projectile-mode +1)
-  :bind (:map projectile-mode-map ("s-p" . projectile-command-map) ("C-c p" . projectile-command-map)))
+  :bind (:map projectile-mode-map  ("C-x p" . projectile-command-map)))
 (provide 'init-utils)
 ;; Local Variables:
 ;; coding: utf-8
