@@ -526,32 +526,7 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
       (slot . 0)
       (window-width . 0.25)
       (preserve-size . (t . nil))
-      (window-parameters . ((no-other-window . t) (no-delete-other-windows . t)))))
-  (setq
-    org-roam-capture-templates
-    '
-    (
-      ("m"
-        "main"
-        plain
-        "%?"
-        :if-new (file+head "main/${slug}.org" "#+title: ${title}\n")
-        :immediate-finish t
-        :unnarrowed t)
-      ("r"
-        "reference"
-        plain
-        "%?"
-        :if-new (file+head "reference/${title}.org" "#+title: ${title}\n")
-        :immediate-finish t
-        :unnarrowed t)
-      ("a"
-        "article"
-        plain
-        "%?"
-        :if-new (file+head "articles/${title}.org" "#+title: ${title}\n#+filetags: :article:\n")
-        :immediate-finish t
-        :unnarrowed t))))
+      (window-parameters . ((no-other-window . t) (no-delete-other-windows . t))))))
 (provide 'init-org)
 ;; Local Variables:
 ;; coding: utf-8

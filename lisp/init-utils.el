@@ -72,7 +72,7 @@
   projectile
   :ensure t
   :init (projectile-mode +1)
-  :bind (:map projectile-mode-map  ("C-x p" . projectile-command-map)))
+  :bind (:map projectile-mode-map ("C-x p" . projectile-command-map)))
 (provide 'init-utils)
 ;; Local Variables:
 ;; coding: utf-8

@@ -92,13 +92,15 @@
           #'cape-file)))
     (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)))
 
-(use-package flymake
+(use-package
+  flymake
   :ensure t
   :config
   (set-face-background 'flymake-errline "red4")
   (set-face-background 'flymake-warnline "DarkOrange"))
 
-(use-package flymake-diagnostic-at-point
+(use-package
+  flymake-diagnostic-at-point
   :ensure t
   :after flymake
   :config
