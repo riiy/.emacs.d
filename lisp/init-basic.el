@@ -78,6 +78,13 @@
   nil)
 ;; Make Emacs use the $PATH set up by the user's shell. https://github.com/purcell/exec-path-from-shell
 (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
+;; for daemon settings
+(when (daemonp) (exec-path-from-shell-initialize))
+(when (daemonp) (tool-bar-mode -1)) ; 关闭 Tool bar
+(when (daemonp) (setq default-frame-alist '((font . "CaskaydiaCove Nerd Font" ))))
+(when (daemonp) (add-to-list 'default-frame-alist
+             '(vertical-scroll-bars . nil)))
+
 (provide 'init-basic)
 ;; Local Variables:
 ;; coding: utf-8
