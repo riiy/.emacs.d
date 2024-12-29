@@ -112,11 +112,11 @@
   :ensure t
   :config
   (setq
-   gptel-model 'qwen2.5-coder:7b
+   gptel-model 'mistral:7b
    gptel-backend (gptel-make-ollama "Ollama"
                    :host "localhost:11434"
                    :stream t
-                   :models '(qwen2.5-coder:7b)))
+                   :models '(mistral:7b)))
   )
 (provide 'init-dev)
 
