@@ -6,7 +6,7 @@
 ;;; Code:
 
 ;; themes
-(load-theme 'modus-vivendi t)
+(use-package dracula :ensure t :init (load-theme 'dracula t))
 ;; 用不同颜色标记多级括号
 (use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
 (use-package
