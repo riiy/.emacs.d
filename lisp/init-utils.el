@@ -73,6 +73,14 @@
   :ensure t
   :init (projectile-mode +1)
   :bind (:map projectile-mode-map ("C-x p" . projectile-command-map)))
+;; Make Emacs use the $PATH set up by the user's shell. https://github.com/purcell/exec-path-from-shell
+(use-package
+  exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
+  (when (daemonp) (exec-path-from-shell-initialize)))
+;; for daemon settings
 (provide 'init-utils)
 ;; Local Variables:
 ;; coding: utf-8
