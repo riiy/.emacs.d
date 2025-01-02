@@ -432,6 +432,9 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
         :prepend t)))
 
   (add-hook 'org-after-refile-insert-hook #'save-buffer)
+  (add-hook 'org-mode-hook #'org-modern-mode)
+  (add-hook 'org-agenda-finalize-hook #'org-modern-agenda)
+
 
   :bind (("C-x y" . 'org-agenda) ("C-x c" . 'org-capture)))
 
@@ -529,6 +532,9 @@ Is relative to `org-directory', unless it is absolute. Is used in Doom's default
       (window-width . 0.25)
       (preserve-size . (t . nil))
       (window-parameters . ((no-other-window . t) (no-delete-other-windows . t))))))
+(use-package
+  org-modern
+  :ensure t)
 (provide 'init-org)
 ;; Local Variables:
 ;; coding: utf-8

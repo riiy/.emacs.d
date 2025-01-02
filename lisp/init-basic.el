@@ -16,11 +16,15 @@
 (add-hook 'prog-mode-hook #'hs-minor-mode) ; 编程模式下，可以折叠代码块
 (global-display-line-numbers-mode 1) ; 在 Window 显示行号
 (when (display-graphic-p) (tool-bar-mode -1)) ; 关闭 Tool bar
+(when (daemonp) (tool-bar-mode -1)) ; 关闭 Tool bar
 (when
   (display-graphic-p)
   (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized))))))
 (when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
-(set-face-attribute 'default nil :font "FiraCode Nerd Font" :height 130)
+(set-face-attribute 'default nil :font "CaskaydiaMonoNerdFont" :height 130)
+(when (daemonp) (setq default-frame-alist '((font . "CaskaydiaMonoNerdFont" ))))
+(when (daemonp) (add-to-list 'default-frame-alist
+             '(vertical-scroll-bars . nil)))
 (savehist-mode 1) ; （可选）打开 Buffer 历史记录保存
 (setq display-line-numbers-type 'relative) ; （可选）显示相对行号
 ;; 终端Emacs滚动时的闪烁问题
@@ -71,14 +75,6 @@
   t
   auto-window-vscroll
   nil)
-;; Make Emacs use the $PATH set up by the user's shell. https://github.com/purcell/exec-path-from-shell
-(when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
-;; for daemon settings
-(when (daemonp) (exec-path-from-shell-initialize))
-(when (daemonp) (tool-bar-mode -1)) ; 关闭 Tool bar
-(when (daemonp) (setq default-frame-alist '((font . "FiraCode Nerd Font" ))))
-(when (daemonp) (add-to-list 'default-frame-alist
-             '(vertical-scroll-bars . nil)))
 
 (provide 'init-basic)
 ;; Local Variables:
