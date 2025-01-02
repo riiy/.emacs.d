@@ -6,7 +6,7 @@
 ;;; Code:
 
 ;; themes
-(use-package dracula-theme :ensure t :init (load-theme 'dracula t))
+(use-package afternoon-theme :ensure t :init (load-theme 'afternoon t))
 ;; 用不同颜色标记多级括号
 (use-package rainbow-delimiters :ensure t :hook (prog-mode . rainbow-delimiters-mode))
 (use-package
