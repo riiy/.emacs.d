@@ -80,7 +80,6 @@
   :config
   (when (memq window-system '(mac ns x)) (exec-path-from-shell-initialize))
   (when (daemonp) (exec-path-from-shell-initialize)))
-;; for daemon settings
 (provide 'init-utils)
 ;; Local Variables:
 ;; coding: utf-8

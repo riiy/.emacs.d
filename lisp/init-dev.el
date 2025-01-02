@@ -107,17 +107,16 @@
   (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
   (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
 (use-package vterm :ensure t)
-(use-package gptel
+(use-package
+  gptel
   :straight t
   :ensure t
   :config
   (setq
-   gptel-model 'mistral:7b
-   gptel-backend (gptel-make-ollama "Ollama"
-                   :host "localhost:11434"
-                   :stream t
-                   :models '(mistral:7b)))
-  )
+    gptel-model
+    'mistral:7b
+    gptel-backend
+    (gptel-make-ollama "Ollama" :host "localhost:11434" :stream t :models '(mistral:7b))))
 (provide 'init-dev)
 
 ;; Local Variables:

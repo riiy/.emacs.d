@@ -21,10 +21,9 @@
   (display-graphic-p)
   (custom-set-variables '(initial-frame-alist (quote ((fullscreen . maximized))))))
 (when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
-(set-face-attribute 'default nil :font "CaskaydiaMonoNerdFont" :height 130)
-(when (daemonp) (setq default-frame-alist '((font . "CaskaydiaMonoNerdFont" ))))
-(when (daemonp) (add-to-list 'default-frame-alist
-             '(vertical-scroll-bars . nil)))
+(when (daemonp) (setq default-frame-alist '(vertical-scroll-bars . nil))) ;关闭滚动条
+(set-face-attribute 'default nil :font "CaskaydiaCoveNerdFont" :height 130)
+(when (daemonp) (add-to-list 'default-frame-alist '((font . "CaskaydiaCoveNerdFont"))))
 (savehist-mode 1) ; （可选）打开 Buffer 历史记录保存
 (setq display-line-numbers-type 'relative) ; （可选）显示相对行号
 ;; 终端Emacs滚动时的闪烁问题
